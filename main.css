@@ -1,0 +1,287 @@
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    padding-top: 5.5rem;
+    overflow-x: clip;
+    overflow-y: scroll;
+}
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --rd-pink: #e64980;
+    --rd-orange: #f97316;
+}
+
+.scroll-smooth {
+    scroll-behavior: smooth;
+}
+
+.backdrop-blur {
+    backdrop-filter: blur(10px);
+}
+
+/* Clean Grid Background */
+.bg-grid {
+    background-size: 40px 40px;
+    background-image:
+        linear-gradient(to right, rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+}
+
+.dark .bg-grid {
+    background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+}
+
+.brand-mark {
+    width: 42px;
+    height: 42px;
+    background-color: #0b1220;
+    color: #f8fafc;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dark .brand-mark {
+    background-color: #f8fafc;
+    color: #0b1220;
+}
+
+.divider {
+    height: 4px;
+    width: 80px;
+    background-color: #0f172a;
+    border-radius: 999px;
+}
+
+.dark .divider {
+    background-color: #f8fafc;
+}
+
+.glass-card {
+    background: color-mix(in srgb, var(--bs-body-bg) 82%, transparent);
+    border: 1px solid color-mix(in srgb, var(--bs-body-color) 24%, transparent);
+    border-radius: 18px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+}
+
+.dark .glass-card {
+    background: color-mix(in srgb, var(--bs-body-bg) 76%, transparent);
+    border-color: color-mix(in srgb, var(--bs-body-color) 32%, transparent);
+}
+
+.badge-step {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 12px;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.role-badge {
+    font-size: 0.8rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    padding: 0.35rem 0.65rem;
+    border-radius: 8px;
+    background-color: color-mix(in srgb, #0f172a 16%, transparent);
+    border: 1px solid color-mix(in srgb, #0f172a 32%, transparent);
+    color: #0b1220;
+}
+
+.dark .role-badge {
+    background-color: color-mix(in srgb, #f8fafc 30%, transparent);
+    border-color: color-mix(in srgb, #f8fafc 45%, transparent);
+    color: #f8fafc;
+}
+
+.border-pink { border-color: var(--rd-pink) !important; }
+.border-orange { border-color: var(--rd-orange) !important; }
+.bg-pink-subtle { background-color: color-mix(in srgb, var(--rd-pink) 12%, transparent) !important; }
+.bg-orange-subtle { background-color: color-mix(in srgb, var(--rd-orange) 12%, transparent) !important; }
+.text-pink-emphasis { color: var(--rd-pink) !important; }
+.text-orange-emphasis { color: var(--rd-orange) !important; }
+
+.text-body-secondary {
+    color: color-mix(in srgb, var(--bs-body-color) 82%, var(--bs-body-bg) 18%) !important;
+}
+
+.dark .text-body-secondary {
+    color: color-mix(in srgb, #f8fafc 90%, #0b1220 10%) !important;
+}
+
+.btn-outline-secondary {
+    color: #0f172a;
+    border-color: #0f172a;
+    font-weight: 600;
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-secondary:focus-visible {
+    background-color: #0f172a;
+    color: #f8fafc;
+    border-color: #0f172a;
+}
+
+.dark .btn-outline-secondary {
+    color: #f8fafc;
+    border-color: #f8fafc;
+}
+
+.dark .btn-outline-secondary:hover,
+.dark .btn-outline-secondary:focus-visible {
+    background-color: #f8fafc;
+    color: #0f172a;
+    border-color: #f8fafc;
+}
+
+.btn-dark {
+    background-color: #0b1220;
+    border-color: #0b1220;
+    font-weight: 700;
+}
+
+.btn-dark:hover,
+.btn-dark:focus-visible {
+    background-color: #000814;
+    border-color: #000814;
+}
+
+.dark .btn-dark {
+    background-color: #e5e7eb;
+    border-color: #e5e7eb;
+    color: #0b1220;
+}
+
+.dark .btn-dark:hover,
+.dark .btn-dark:focus-visible {
+    background-color: #f8fafc;
+    border-color: #f8fafc;
+    color: #0b1220;
+}
+
+footer {
+    background-color: #0b1220;
+    color: #f8fafc;
+}
+
+footer p {
+    color: inherit;
+}
+
+/* Abstract visual */
+.orbit {
+    position: absolute;
+    inset: 0;
+    border: 1px solid color-mix(in srgb, var(--bs-body-color) 18%, transparent);
+    border-radius: 50%;
+    animation: spin 12s linear infinite;
+    opacity: 0.6;
+}
+
+.inner-orbit {
+    inset: 12%;
+    animation-direction: reverse;
+}
+
+.visual-graphic {
+    overflow: hidden;
+}
+
+.node-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    width: 7.5rem;
+    height: 7.5rem;
+    overflow: hidden;
+}
+
+.node {
+    border-radius: 12px;
+    opacity: 0.85;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    animation: pulse 4s ease-in-out infinite;
+}
+
+.node:nth-child(2) { animation-delay: 0.4s; }
+.node:nth-child(3) { animation-delay: 0.8s; }
+.node:nth-child(4) { animation-delay: 1.2s; }
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.08); opacity: 1; }
+}
+
+/* Focus states */
+*:focus-visible {
+    outline: 3px solid #f59e0b;
+    outline-offset: 2px;
+}
+
+/* Simple text mode */
+body.text-mode-active {
+    background-color: #ffffff;
+    color: #000000;
+    background-image: none;
+}
+
+.dark body.text-mode-active {
+    background-color: #000000;
+    color: #ffffff;
+    background-image: none;
+}
+
+body.text-mode-active #text-view {
+    color: inherit;
+}
+
+body.text-mode-active #text-view * {
+    color: inherit !important;
+}
+
+body.text-mode-active #text-view li {
+    border-left: none !important;
+    padding-left: 0 !important;
+}
+
+/* Motion reduction */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto !important;
+    }
+
+    .orbit,
+    .node {
+        animation: none !important;
+    }
+
+    .glass-card {
+        transition: none !important;
+    }
+}
