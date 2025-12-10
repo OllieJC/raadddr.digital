@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>RAADDDR — Coming Soon</title>
+        <meta name="robots" content="noindex, nofollow">
+        <meta name="googlebot" content="noindex, nofollow">
+        <style>
+    :root {
+      --bg-start: #0f1b2d;
+      --bg-end: #16263d;
+      --accent: #5de1e6;
+      --accent-2: #d6f6ff;
+      --text: #e8f1ff;
+      --muted: #b9c6dc;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at 20% 20%, rgba(93, 225, 230, 0.12), transparent 32%),
+                  radial-gradient(circle at 80% 10%, rgba(214, 246, 255, 0.12), transparent 28%),
+                  linear-gradient(135deg, var(--bg-start), var(--bg-end));
+      color: var(--text);
+      font-family: "Space Grotesk", "Segoe UI", "Helvetica Neue", sans-serif;
+      letter-spacing: 0.01em;
+      padding: 24px;
+    }
+
+    .card {
+      width: min(720px, 100%);
+      padding: 40px 32px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      text-align: center;
+    }
+
+    .mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(93, 225, 230, 0.12);
+      color: var(--accent);
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid rgba(93, 225, 230, 0.45);
+    }
+
+    .glow {
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      background: radial-gradient(circle at 50% 0%, rgba(93, 225, 230, 0.18), transparent 45%);
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    h1 {
+      margin: 22px 0 12px;
+      font-size: clamp(32px, 6vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+    }
+
+    p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .pill {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+      margin: 22px 0 10px;
+    }
+
+    .chip {
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    footer {
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <div class="glow" aria-hidden="true"></div>
+            <div class="mark">RAADDDR · Coming Soon</div>
+            <h1>Digital the RAADDDR way</h1>
+            <p>
+                RAADDDR stands for Research, Analyse, Architect, Design, Develop, Deliver, and Run - a complete loop for resilient digital products.
+            </p>
+            <div class="grid" aria-label="RAADDDR principles">
+                <div class="chip">Research</div>
+                <div class="chip">Analyse</div>
+                <div class="chip">Architect</div>
+                <div class="chip">Design</div>
+                <div class="chip">Develop</div>
+                <div class="chip">Deliver</div>
+                <div class="chip">Run</div>
+            </div>
+            <footer>
+                We&apos;re crafting what&apos;s next. Stay tuned.
+            </footer>
+        </div>
+    </body>
+</html>
