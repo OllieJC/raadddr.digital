@@ -15,7 +15,7 @@ export const TRANSLATIONS = {
         label: "Recherche",
         prefix: "",
         roles: ["Chercheur·e en recherche utilisateur"],
-        desc: "Planifier et mener des activités de recherche utilisateur pour aider les équipes à comprendre en profondeur les personnes qui utilisent les services gouvernementaux. Cette recherche informe la politique, la proposition, le service, le contenu et le design d'interaction pour que les services fonctionnent bien pour les utilisateurs et atteignent l'objectif politique.",
+        desc: "Planifier et réaliser des activités de recherche utilisateur qui aident les équipes à développer une compréhension approfondie des personnes qui utilisent les services. Ces recherches éclairent l’élaboration des politiques, des propositions de valeur, des services, des contenus et des interactions, afin que les services fonctionnent bien pour les utilisateurs et répondent aux objectifs de l’entreprise, de l’organisation et des politiques publiques.",
       },
       analyse: {
         letter: "A",
@@ -26,7 +26,7 @@ export const TRANSLATIONS = {
           "Analyste de données",
           "Analyste performance",
         ],
-        desc: "Auditer les données et comprendre les processus métier pour garantir que les solutions technologiques s'alignent avec les objectifs stratégiques. Cela implique d'agréger des informations complexes de toute l'organisation pour éclairer la prise de décision.",
+        desc: "Auditer les données et comprendre les processus métier et organisationnels afin de garantir que les solutions technologiques sont alignées sur les objectifs stratégiques. Cela implique d’agréger et de désagréger des informations complexes provenant de l’ensemble de l’organisation pour éclairer la prise de décision.",
       },
       architect: {
         letter: "A",
@@ -106,14 +106,14 @@ export const TRANSLATIONS = {
         label: "Research",
         prefix: "",
         roles: ["User Researcher"],
-        desc: "Plan and carry out user research activities that help teams get a deep understanding of the people that use services. This research informs policy, proposition, service, content, and interaction design so that services work well for users and achieve policy intent.",
+        desc: "Plan and carry out user research activities that help teams get a deep understanding of the people that use services. This research informs policy, proposition, service, content, and interaction design so that services work well for users and achieve business, organisational and policy intent.",
       },
       analyse: {
         letter: "A",
         label: "Analyse",
         prefix: "",
         roles: ["Business Analyst", "Data Analyst", "Performance Analyst"],
-        desc: "Audit data and understand business processes to ensure technology solutions align with strategic goals. This involves aggregating and disaggregating complex information from across the organisation to inform decision-making.",
+        desc: "Audit data and understand business and organisational processes to ensure technology solutions align with strategic goals. This involves aggregating and disaggregating complex information from across the organisation to inform decision-making.",
       },
       architect: {
         letter: "A",
@@ -176,9 +176,12 @@ export const TRANSLATIONS = {
     description:
       "By **digital** we mean using modern technology, data and design to create and run products and services that work end-to-end for people - customers, service users, citizens, colleagues, suppliers and partners. It is not just about websites or IT systems. It is about how an organization delivers its purpose: turning strategy into reality, improving experience and efficiency and strengthening the day-to-day operation of the business.\n\nThe **RAADDDR** framework brings this work to life. It describes the core professional activities behind any successful digital product or service: Research, Analyze, Architect, Design, Develop, Deliver and Run. These are not rigid phases in a project plan. They are roles and practices that teams draw on continuously as they create, improve and operate the services that matter to their users.\n\nAt its heart, **RAADDDR** is about multidisciplinary teams that start with user needs, design with data, use agile and iterative ways of working and operate reliable services over time. It recognizes that excellent digital outcomes depend on each profession being respected, invested in and given the space to practice its craft. This framework is a showcase for that profession: a way to talk confidently about what we do, why it matters and how it delivers better outcomes for the people and communities we serve.\n\nChoose an activity below to learn more:",
     items: {
+      research: {
+        desc: "Plan and carry out user research activities that help teams get a deep understanding of the people that use services. This research informs policy, proposition, service, content and interaction design so that services work well for users and achieve business, organizational and policy intent.",
+      },
       analyse: {
         label: "Analyze",
-        desc: "Audit data and understand business processes to ensure technology solutions align with strategic goals. This involves aggregating and disaggregating complex information from across the organization to inform decision-making.",
+        desc: "Audit data and understand business and organizational processes to ensure technology solutions align with strategic goals. This involves aggregating and disaggregating complex information from across the organization to inform decision-making.",
       },
       run: {
         desc: "Ensure the reliability, availability, and performance of services in production. This involves monitoring, incident management, and continuous optimization of infrastructure to meet evolving user and operational needs.",
