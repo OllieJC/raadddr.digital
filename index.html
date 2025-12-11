@@ -6,10 +6,23 @@
     <title>RAADDDR - Digital Activities</title>
     <meta name="description"
           content="RAADDDR: An activity framework for resilient digital technology, products and services.">
+    <meta name="keywords"
+          content="RAADDDR, digital, technology, framework, activities, products, services, research, architect, analyse, design, develop, deliver, run">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
           rel="stylesheet">
+    <link rel="icon"
+          type="image/png"
+          href="/assets/favicon-96x96.png"
+          sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="apple-touch-icon"
+          sizes="180x180"
+          href="/assets/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="RAADDDR" />
+    <link rel="manifest" href="/assets/site.webmanifest" />
     <style>
     /* --- CSS Variables & Theming --- */
     :root {
@@ -595,23 +608,11 @@
       <main>
         <article class="glass-card">
           <div class="logo-container">
-            <!-- Custom SVG Logo: 7 elements in a loop -->
-            <svg viewBox="0 0 100 100" class="logo-svg" aria-label="RAADDDR Logo">
-              <defs>
-              <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style="stop-color:var(--accent);stop-opacity:1" />
-              <stop offset="100%" style="stop-color:var(--text-main);stop-opacity:0.5" />
-              </linearGradient>
-              </defs>
-              <!-- 7 distinct geometric pills arranged in a dynamic spiral -->
-              <rect x="46" y="5" width="8" height="20" rx="4" opacity="0.4" transform="rotate(0 50 50)" />
-              <rect x="46" y="5" width="8" height="20" rx="4" opacity="0.5" transform="rotate(51.4 50 50)" />
-              <rect x="46" y="5" width="8" height="20" rx="4" opacity="0.6" transform="rotate(102.8 50 50)" />
-              <rect x="46" y="5" width="8" height="20" rx="4" opacity="0.7" transform="rotate(154.2 50 50)" />
-              <rect x="46" y="5" width="8" height="20" rx="4" opacity="0.8" transform="rotate(205.6 50 50)" />
-              <rect x="46" y="5" width="8" height="20" rx="4" opacity="0.9" transform="rotate(257 50 50)" />
-              <rect x="46" y="5" width="8" height="20" rx="4" opacity="1.0" transform="rotate(308.4 50 50)" />
-            </svg>
+            <img src="icon.svg"
+                 alt="RAADDDR Logo"
+                 class="logo-svg"
+                 width="100"
+                 height="100" />
           </div>
           <div class="glow-spot"></div>
           <h1 data-i18n="title"></h1>
