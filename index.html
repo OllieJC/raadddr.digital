@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en-GB">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RAADDDR — Digital Lifecycle</title>
-  <meta name="description" content="RAADDDR: A complete loop for resilient digital technology, products and services.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAADDDR - Digital Activities</title>
+    <meta name="description"
+          content="RAADDDR: An activity framework for resilient digital technology, products and services.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+    <style>
     /* --- CSS Variables & Theming --- */
     :root {
       /* Dark Mode (Default) - HIGH CONTRAST */
@@ -137,7 +137,6 @@
       border-radius: 24px;
       padding: 3rem 2rem;
       box-shadow: var(--card-shadow);
-      text-align: center;
       position: relative;
       overflow: hidden;
       transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
@@ -209,6 +208,7 @@
       margin-bottom: 1rem;
       font-weight: 700;
       letter-spacing: -0.02em;
+      text-align: center;
     }
 
     .description {
@@ -353,16 +353,18 @@
     /* --- Detail Modal Specifics --- */
     .modal-header {
       display: flex;
-      align-items: baseline;
+      align-items: center;
       gap: 8px;
       margin-bottom: 0.5rem;
       color: var(--accent);
+      justify-content: center;
     }
 
     .modal-big-letter {
       font-size: 3rem;
       font-weight: 700;
       line-height: 1;
+      padding-right: 0.75rem;
     }
 
     .modal-title {
@@ -384,6 +386,7 @@
       flex-wrap: wrap;
       gap: 8px;
       margin-bottom: 1.5rem;
+      justify-content: center;
     }
 
     .role-pill {
@@ -517,260 +520,136 @@
         margin: 0;
       }
     }
-  </style>
-</head>
-
-<body>
-
-  <!-- DETAIL Modal -->
-  <div id="detailModal" class="modal-overlay">
-    <div class="modal-content">
-      <button class="modal-close" id="closeDetailModal" aria-label="Close details">
-        <svg class="icon-lg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-      </button>
-      <div class="modal-header">
-        <span class="modal-big-letter" id="mLetter"></span>
-        <span class="modal-title" id="mTitle"></span>
-      </div>
-      <!-- Roles Container -->
-      <div class="modal-roles" id="mRoles"></div>
-
-      <p class="modal-desc" id="mDesc"></p>
-    </div>
-  </div>
-
-  <!-- LANGUAGE Modal -->
-  <div id="langModal" class="modal-overlay">
-    <div class="modal-content">
-      <button class="modal-close" id="closeLangModal" aria-label="Close language selection">
-        <svg class="icon-lg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-      </button>
-      <h2 id="langModalTitle" data-i18n="langModalTitle" style="margin-bottom: 0.5rem; font-size: 1.5rem; font-weight: 700;">Select Language</h2>
-      <p id="langModalDesc" data-i18n="langModalDesc" style="color: var(--text-muted); margin-bottom: 1.5rem; font-weight: 400;">Choose your preferred interface language.</p>
-      <div class="lang-list" id="langList">
-        <!-- Populated by JS -->
-      </div>
-    </div>
-  </div>
-
-  <div class="wrapper">
-    <!-- Controls: Language & Theme -->
-    <header class="controls" aria-label="Site settings">
-      <button class="control-btn" id="langBtn" aria-label="Change Language">
-        <svg class="icon" viewBox="0 0 24 24">
-          <path d="M12.87 15.07l-2.54-2.51.03-.03A17.52 17.52 0 0014.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>
-        <span class="control-text" id="langLabel">English</span>
-        <svg class="icon" style="width:14px; height:14px; opacity:0.7;" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
-      </button>
-      <button class="control-btn" id="themeToggle" aria-label="Toggle Dark Mode">
-        <svg class="icon" id="themeIcon" viewBox="0 0 24 24">
-          <path d="M12 3a9 9 0 109 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 01-4.4 2.26 5.403 5.403 0 01-5.4-5.4c0-1.81.73-3.44 1.91-4.64C12.92 3.04 12.46 3 12 3zm0-2a11 11 0 0111 11 11 11 0 01-11 11A11 11 0 011 12 11 11 0 0112 1z"/></svg>
-        <span class="control-text" id="themeLabel">Dark Mode</span>
-      </button>
-    </header>
-
-    <main>
-      <article class="glass-card">
-        <div class="logo-container">
-          <!-- Custom SVG Logo: 7 elements in a loop -->
-          <svg viewBox="0 0 100 100" class="logo-svg" aria-label="RAADDDR Logo">
-            <defs>
-              <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:var(--accent);stop-opacity:1" />
-                <stop offset="100%" style="stop-color:var(--text-main);stop-opacity:0.5" />
-              </linearGradient>
-            </defs>
-            <!-- 7 distinct geometric pills arranged in a dynamic spiral -->
-            <rect x="46" y="5" width="8" height="20" rx="4" opacity="0.4" transform="rotate(0 50 50)" />
-            <rect x="46" y="5" width="8" height="20" rx="4" opacity="0.5" transform="rotate(51.4 50 50)" />
-            <rect x="46" y="5" width="8" height="20" rx="4" opacity="0.6" transform="rotate(102.8 50 50)" />
-            <rect x="46" y="5" width="8" height="20" rx="4" opacity="0.7" transform="rotate(154.2 50 50)" />
-            <rect x="46" y="5" width="8" height="20" rx="4" opacity="0.8" transform="rotate(205.6 50 50)" />
-            <rect x="46" y="5" width="8" height="20" rx="4" opacity="0.9" transform="rotate(257 50 50)" />
-            <rect x="46" y="5" width="8" height="20" rx="4" opacity="1.0" transform="rotate(308.4 50 50)" />
+    </style>
+  </head>
+  <body>
+    <!-- DETAIL Modal -->
+    <div id="detailModal" class="modal-overlay">
+      <div class="modal-content">
+        <button class="modal-close"
+                id="closeDetailModal"
+                aria-label="Close details"
+                tabindex="-1">
+          <svg class="icon-lg" viewBox="0 0 24 24">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
           </svg>
+        </button>
+        <div class="modal-header">
+          <span class="modal-big-letter" id="mLetter"></span>
+          <span class="modal-title" id="mTitle"></span>
         </div>
+        <!-- Roles Container -->
+        <div class="modal-roles" id="mRoles"></div>
+        <p class="modal-desc" id="mDesc"></p>
+      </div>
+    </div>
+    <!-- LANGUAGE Modal -->
+    <div id="langModal" class="modal-overlay">
+      <div class="modal-content">
+        <button class="modal-close"
+                tabindex="-1"
+                id="closeLangModal"
+                aria-label="Close language selection">
+          <svg class="icon-lg" viewBox="0 0 24 24">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+          </svg>
+        </button>
+        <h2 id="langModalTitle"
+            data-i18n="langModalTitle"
+            style="margin-bottom: 0.5rem;
+                   font-size: 1.5rem;
+                   font-weight: 700">Select Language</h2>
+        <p id="langModalDesc"
+           data-i18n="langModalDesc"
+           style="color: var(--text-muted);
+                  margin-bottom: 1.5rem;
+                  font-weight: 400">Choose your preferred interface language.</p>
+        <div class="lang-list" id="langList">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+    <div class="wrapper">
+      <!-- Controls: Language & Theme -->
+      <header class="controls" aria-label="Site settings">
+        <button class="control-btn" id="langBtn" aria-label="Change Language">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M12.87 15.07l-2.54-2.51.03-.03A17.52 17.52 0 0014.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7l1.62-4.33L19.12 17h-3.24z" />
+          </svg>
+          <span class="control-text" id="langLabel">English</span>
+          <svg class="icon"
+               style="width:14px;
+                      height:14px;
+                      opacity:0.7"
+               viewBox="0 0 24 24">
+            <path d="M7 10l5 5 5-5z" />
+          </svg>
+        </button>
+        <button class="control-btn" id="themeToggle" aria-label="Toggle Dark Mode">
+          <svg class="icon" id="themeIcon" viewBox="0 0 24 24">
+            <path d="M12 3a9 9 0 109 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 01-4.4 2.26 5.403 5.403 0 01-5.4-5.4c0-1.81.73-3.44 1.91-4.64C12.92 3.04 12.46 3 12 3zm0-2a11 11 0 0111 11 11 11 0 01-11 11A11 11 0 011 12 11 11 0 0112 1z" />
+          </svg>
+          <span class="control-text" id="themeLabel">Dark Mode</span>
+        </button>
+      </header>
+      <main>
+        <article class="glass-card">
+          <div class="logo-container">
+            <!-- Custom SVG Logo: 7 elements in a loop -->
+            <svg viewBox="0 0 100 100" class="logo-svg" aria-label="RAADDDR Logo">
+              <defs>
+              <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:var(--accent);stop-opacity:1" />
+              <stop offset="100%" style="stop-color:var(--text-main);stop-opacity:0.5" />
+              </linearGradient>
+              </defs>
+              <!-- 7 distinct geometric pills arranged in a dynamic spiral -->
+              <rect x="46" y="5" width="8" height="20" rx="4" opacity="0.4" transform="rotate(0 50 50)" />
+              <rect x="46" y="5" width="8" height="20" rx="4" opacity="0.5" transform="rotate(51.4 50 50)" />
+              <rect x="46" y="5" width="8" height="20" rx="4" opacity="0.6" transform="rotate(102.8 50 50)" />
+              <rect x="46" y="5" width="8" height="20" rx="4" opacity="0.7" transform="rotate(154.2 50 50)" />
+              <rect x="46" y="5" width="8" height="20" rx="4" opacity="0.8" transform="rotate(205.6 50 50)" />
+              <rect x="46" y="5" width="8" height="20" rx="4" opacity="0.9" transform="rotate(257 50 50)" />
+              <rect x="46" y="5" width="8" height="20" rx="4" opacity="1.0" transform="rotate(308.4 50 50)" />
+            </svg>
+          </div>
+          <div class="glow-spot"></div>
+          <h1 data-i18n="title"></h1>
+          <p class="description" tabindex="0" data-i18n="description"></p>
+          <section class="acronym-grid" aria-label="RAADDDR Principles">
+            <!-- Content populated by JS -->
+          </section>
+        </article>
+      </main>
+      <footer class="site-footer">
+        <span data-i18n="footerLegal">This work is published for the Public Domain from the United Kingdom.</span>
+        <br>
+        <br>
+        <a href="https://creativecommons.org/publicdomain/zero/1.0/"
+           target="_blank"
+           rel="noopener noreferrer">CC0 1.0 Universal</a> •
+        <a href="https://unlicense.org/"
+           target="_blank"
+           rel="noopener noreferrer">The Unlicense</a>
+      </footer>
+    </div>
+    <script type="module">
+    import { TRANSLATIONS } from './translations.js';
 
-        <div class="glow-spot"></div>
-
-        <h1 data-i18n="title">Digital the RAADDDR way</h1>
-
-        <p class="description" data-i18n="description">
-          Orchestrating the digital lifecycle in continuous, adaptive loops - from the first spark of discovery to retirement or replacement.
-        </p>
-
-        <section class="acronym-grid" aria-label="RAADDDR Principles">
-          <!-- Content populated by JS -->
-        </section>
-      </article>
-    </main>
-
-    <footer class="site-footer">
-      <span data-i18n="footerLegal">This work is published for the Public Domain from the United Kingdom.</span><br><br>
-      <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener noreferrer">CC0 1.0 Universal</a> •
-      <a href="https://unlicense.org/" target="_blank" rel="noopener noreferrer">The Unlicense</a>
-    </footer>
-  </div>
-
-  <script>
     // --- Configuration & Data ---
 
     // Define available languages
-    const languages = [
-      { code: 'en-GB', name: 'English (UK)' },
-      { code: 'en-US', name: 'English (US)' },
+    const LANGUAGES = [
+      { code: 'en-gb', name: 'English (UK)' },
+      { code: 'en-us', name: 'English (US)' },
       { code: 'fr', name: 'Français' }
     ];
 
-    // Base Translation Objects
-    const translations = {
-      'fr': {
-        title: "Le numérique façon RAADDDR",
-        description: "Orchestrer le cycle de vie numérique en boucles continues et adaptatives - de la première étincelle de découverte jusqu'au remplacement ou à la retraite.",
-        themeLabelDark: "Mode sombre",
-        themeLabelLight: "Mode clair",
-        langModalTitle: "Choisir la langue",
-        langModalDesc: "Sélectionnez votre langue d'interface préférée.",
-        footerLegal: "Cette œuvre est publiée dans le domaine public au Royaume-Uni.",
-        items: [
-          {
-            letter: "R",
-            label: "Recherche",
-            prefix: "",
-            roles: ["Chercheur·e en recherche utilisateur"],
-            desc: "Planifier et mener des activités de recherche utilisateur pour aider les équipes à comprendre en profondeur les personnes qui utilisent les services gouvernementaux. Cette recherche informe la politique, la proposition, le service, le contenu et le design d'interaction pour que les services fonctionnent bien pour les utilisateurs et atteignent l'objectif politique."
-          },
-          {
-            letter: "A",
-            label: "Analyse",
-            prefix: "",
-            roles: ["Analyste métier", "Analyste de données", "Analyste performance"],
-            desc: "Auditer les données et comprendre les processus métier pour garantir que les solutions technologiques s'alignent avec les objectifs stratégiques. Cela implique d'agréger des informations complexes de toute l'organisation pour éclairer la prise de décision."
-          },
-          {
-            letter: "A",
-            label: "Architecture",
-            prefix: "",
-            roles: ["Architecte technique", "Architecte données", "Architecte métier", "Architecte solution"],
-            desc: "Développer une vue intégrée de l'entreprise et de ses systèmes. Les architectes conçoivent la structure et les relations entre les données, les applications et l'infrastructure pour garantir scalabilité, sécurité et alignement avec la stratégie."
-          },
-          {
-            letter: "D",
-            label: "Design",
-            prefix: "Le",
-            roles: ["Designer de service", "Designer d'interaction", "Designer de contenu", "Graphiste"],
-            desc: "Concevoir des services complets de bout en bout qui répondent aux besoins des utilisateurs et aux objectifs politiques. Cela inclut la création d'interfaces intuitives, de contenu clair et de parcours utilisateurs fluides sur tous les canaux."
-          },
-          {
-            letter: "D",
-            label: "Développement",
-            prefix: "",
-            roles: ["Développeur logiciel", "Développeur front-end", "Développeur back-end", "Ingénieur DevOps"],
-            desc: "Écrire, adapter, maintenir et soutenir un code de qualité professionnelle. Les développeurs construisent la solution technique, assurant qu'elle est robuste, testable et répond aux normes d'accessibilité et de sécurité."
-          },
-          {
-            letter: "D",
-            label: "Déploiement",
-            prefix: "",
-            roles: ["Responsable delivery / Responsable de livraison", "Chef de produit", "Responsable des mises en production"],
-            desc: "Gérer le cycle de vie du produit et le pipeline de livraison. Il s'agit de livrer de la valeur aux utilisateurs de manière continue et fiable, en surmontant les obstacles et en favorisant une culture d'amélioration continue."
-          },
-          {
-            letter: "R",
-            label: "Run",
-            prefix: "Le",
-            roles: ["Ingénieur fiabilité (SRE)", "Exploitation informatique", "Centre de services / Service desk", "Responsable de service / Gestionnaire de services"],
-            desc: "Assurer la fiabilité, la disponibilité et la performance des services en production. Cela implique le monitoring, la gestion des incidents et l'optimisation continue de l'infrastructure pour répondre aux besoins changeants."
-          }
-        ]
-      },
-      // British English serves as the Base for English
-      'en-GB': {
-        title: "Digital the RAADDDR way",
-        description: "Orchestrating the digital lifecycle in continuous, adaptive loops - from the first spark of discovery to retirement or replacement.",
-        themeLabelDark: "Dark Mode",
-        themeLabelLight: "Light Mode",
-        langModalTitle: "Select Language",
-        langModalDesc: "Choose your preferred interface language.",
-        footerLegal: "This work is published for the Public Domain from the United Kingdom.",
-        items: [
-          {
-            letter: "R",
-            label: "Research",
-            prefix: "",
-            roles: ["User Researcher"],
-            desc: "Plan and carry out user research activities that help teams get a deep understanding of the people that use government services. This research informs policy, proposition, service, content, and interaction design so that services work well for users and achieve policy intent."
-          },
-          {
-            letter: "A",
-            label: "Analyse",
-            prefix: "",
-            roles: ["Business Analyst", "Data Analyst", "Performance Analyst"],
-            desc: "Audit data and understand business processes to ensure technology solutions align with strategic goals. This involves aggregating and disaggregating complex information from across the organisation to inform decision-making."
-          },
-          {
-            letter: "A",
-            label: "Architect",
-            prefix: "",
-            roles: ["Technical Architect", "Data Architect", "Business Architect", "Solution Architect"],
-            desc: "Develop an integrated view of an enterprise and its systems. Architects design the structure and relationships of data, applications, and infrastructure to ensure scalability, security, and alignment with strategy."
-          },
-          {
-            letter: "D",
-            label: "Design",
-            prefix: "",
-            roles: ["Service Designer", "Interaction Designer", "Content Designer", "Graphic Designer"],
-            desc: "Design end-to-end services that work for users and meet policy goals. This encompasses creating intuitive interfaces, clear content, and seamless user journeys across all channels, transforming needs into tangible experiences."
-          },
-          {
-            letter: "D",
-            label: "Develop",
-            prefix: "",
-            roles: ["Software Developer", "Frontend Developer", "Backend Developer", "DevOps Engineer"],
-            desc: "Write, adapt, maintain, and support high-quality code. Developers build the technical solution, ensuring it is robust, testable, and meets accessibility and security standards for modern digital products."
-          },
-          {
-            letter: "D",
-            label: "Deliver",
-            prefix: "",
-            roles: ["Delivery Manager", "Product Manager", "Release Manager"],
-            desc: "Manage the product lifecycle and delivery pipeline. This focuses on shipping value to users continuously and reliably, removing blockers, and fostering a culture of continuous improvement and rapid feedback loops."
-          },
-          {
-            letter: "R",
-            label: "Run",
-            prefix: "",
-            roles: ["Site Reliability Engineer", "IT Operations", "Service Desk", "Service Manager"],
-            desc: "Ensure the reliability, availability, and performance of services in production. This involves monitoring, incident management, and continuous optimization of infrastructure to meet evolving user and operational needs."
-          }
-        ]
-      },
-      // American English Overrides
-      'en-US': {
-        // description: Same as GB, so omitted to test fallback logic
-        // title: Same as GB
-        items: [
-          {}, // R (Index 0) - Empty object means inherit from base
-          {
-            // A (Index 1) - Override Label
-            label: "Analyze",
-            // Desc can be inherited or overridden. If American spelling differs significantly in body text, include here.
-            // For MVP simplicity, we override just the label for demonstration.
-            roles: ["Business Analyst", "Data Analyst", "Performance Analyst"],
-            desc: "Audit data and understand business processes to ensure technology solutions align with strategic goals. This involves aggregating and disaggregating complex information from across the organization to inform decision-making." // Organization (z)
-          },
-          {}, // A (Index 2)
-          {}, // D (Index 3)
-          {}, // D (Index 4)
-          {}, // D (Index 5)
-          {
-            // R (Index 6)
-            roles: ["Site Reliability Engineer", "IT Operations", "Service Desk", "Service Manager"],
-            desc: "Ensure the reliability, availability, and performance of services in production. This involves monitoring, incident management, and continuous optimization of infrastructure to meet evolving user and operational needs." // Optimization (z)
-          }
-        ]
-      }
-    };
+    const DEFAULT_LANG = 'en-gb';
+
+    function normalizeLang(langCode) {
+      return (langCode || DEFAULT_LANG).toLowerCase();
+    }
 
     // --- State Management ---
 
@@ -778,24 +657,15 @@
     function detectLanguage() {
       // Check LocalStorage first
       const stored = localStorage.getItem('raadddr_lang');
-      if (stored) return stored;
+      if (stored) return normalizeLang(stored);
 
       // Check Browser Language
-      const browserLang = navigator.language; // e.g., "en-US", "fr-FR", "en"
-
-      // Check for exact match in our supported list
-      if (languages.some(l => l.code === browserLang)) {
-        return browserLang;
-      }
-
-      // Check for partial match (e.g. "fr-CA" -> "fr")
-      const baseLang = browserLang.split('-')[0];
-      if (languages.some(l => l.code === baseLang)) {
-        return baseLang;
+      if (navigator.language) {
+        return normalizeLang(navigator.language);
       }
 
       // Default to British English if nothing matches
-      return 'en-GB';
+      return DEFAULT_LANG;
     }
 
     const state = {
@@ -831,143 +701,172 @@
       i18nTargets: document.querySelectorAll('[data-i18n]')
     };
 
+    // Make close buttons unfocusable until their modal is active
+    if (els.closeDetailModal) els.closeDetailModal.tabIndex = -1;
+    if (els.closeLangModal) els.closeLangModal.tabIndex = -1;
+
     // --- Core Functions ---
 
-    // Helper: Get merged data for a specific language
-    function getLocalizedData(langCode) {
-      // If it's French, return French directly
-      if (langCode === 'fr') return translations['fr'];
+    // Helper: Resolve a locale object without applying fallbacks
+    function resolveLocale(langCode) {
+      const normalized = normalizeLang(langCode);
+      return TRANSLATIONS[normalized] || TRANSLATIONS[normalized.split('-')[0]];
+    }
 
-      // If it's GB, return GB directly
-      if (langCode === 'en-GB') return translations['en-GB'];
-
-      // If it's US (or other future English variants), merge with GB base
-      if (langCode === 'en-US') {
-        const base = translations['en-GB'];
-        const override = translations['en-US'];
-
-        // Deep merge logic simplified for this specific structure
-        const merged = { ...base, ...override };
-
-        // Merge Items Array specifically
-        if (override.items) {
-          merged.items = base.items.map((item, index) => {
-            const overrideItem = override.items[index];
-            // If override exists and has keys, merge it over base item
-            if (overrideItem && Object.keys(overrideItem).length > 0) {
-              return { ...item, ...overrideItem };
-            }
-            return item;
-          });
-        }
-        return merged;
+    function getItemValue(item, defaultItem, key) {
+      if (item && item[key]) {
+        return getHtmlValue(item[key]);
       }
+      return getHtmlValue(defaultItem[key]);
+    }
 
-      // Fallback
-      return translations['en-GB'];
+    function getHtmlValue(value) {
+      if (value !== undefined && value !== null) {
+        if (typeof value === 'string') {
+          value = value.replaceAll(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+          value = value.replaceAll('\n', '<br>');
+          return value;
+        }
+      }
+      return value;
     }
 
     function updateContent() {
-      const t = getLocalizedData(state.lang);
-      const currentLangName = languages.find(l => l.code === state.lang).name;
+      const langCode = normalizeLang(state.lang);
+      const currentLang = LANGUAGES.find(l => l.code === langCode) || LANGUAGES.find(l => langCode.startsWith(l.code)) || LANGUAGES[0];
+      const currentLangName = currentLang ? currentLang.name : '';
 
       // Update simple text elements
       els.i18nTargets.forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (t[key]) el.textContent = t[key];
+        el.innerHTML = getItemValue(TRANSLATIONS[langCode], TRANSLATIONS[DEFAULT_LANG], key);
       });
 
       // Update Language Label in Header
       els.langLabel.textContent = currentLangName;
 
       // Update Theme Label based on current Lang + Theme
-      updateThemeLabel(t);
+      updateThemeLabel();
 
-      els.html.setAttribute('lang', state.lang);
+      els.html.setAttribute('lang', langCode);
 
       // Rebuild Grid
       els.grid.innerHTML = '';
-      t.items.forEach((item, index) => {
-        const btn = document.createElement('div');
+      Object.keys(TRANSLATIONS[DEFAULT_LANG].items).forEach((key) => {
+        const btn = document.createElement('button');
+        btn.id = `grid-item-${key}`;
+        btn.type = 'button';
         btn.className = 'grid-item';
-        btn.setAttribute('role', 'button');
-        btn.setAttribute('tabindex', '0');
+
+        const item = TRANSLATIONS[langCode]
+          && TRANSLATIONS[langCode].items
+          && TRANSLATIONS[langCode].items[key] 
+          ? TRANSLATIONS[langCode].items[key] : null;
+        const defaultItem = TRANSLATIONS[DEFAULT_LANG].items[key];
 
         // Logic for "Le Design" -> <em>Le</em> <span class="letter">D</span>esign
         let html = '';
-        if (item.prefix) {
-          html += `<em>${item.prefix}</em>`;
+        const prefixStr = getItemValue(item, defaultItem, 'prefix');
+        if (prefixStr) {
+          html += `<em>${prefixStr}</em>`;
         }
-        html += `<span class="letter">${item.letter}</span>`;
-        html += item.label.substring(1); // Rest of the word
+        const letterStr = getItemValue(item, defaultItem, 'letter');
+        html += `<span class="letter">${letterStr}</span>`;
+
+        const labelRemainder = getItemValue(item, defaultItem, 'label');
+        html += labelRemainder.substring(1); // Rest of the word
 
         btn.innerHTML = html;
 
         // Add click listener for modal
-        btn.addEventListener('click', () => openDetailModal(item));
+        // Click or keyboard (native button behavior handles Enter/Space)
+        btn.addEventListener('click', () => openDetailModal(item, defaultItem, btn.id));
 
         els.grid.appendChild(btn);
       });
     }
 
-    function updateThemeLabel(t) {
-      // Need to pass 't' because it changes based on lang
-      if (!t) t = getLocalizedData(state.lang);
-      els.themeLabel.textContent = state.theme === 'dark' ? t.themeLabelDark : t.themeLabelLight;
+    function updateThemeLabel() {
+      const labelKey = state.theme === 'dark' ? 'themeLabelDark' : 'themeLabelLight';
+      els.themeLabel.innerHTML = getItemValue(TRANSLATIONS[state.lang], TRANSLATIONS[DEFAULT_LANG], labelKey);
     }
 
     // --- Modal Logic ---
 
     // 1. Detail Modal
-    function openDetailModal(item) {
-      els.mLetter.textContent = item.letter;
-      if (item.prefix) {
-        els.mTitle.innerHTML = `<em>${item.prefix}</em> ${item.label}`;
+    function openDetailModal(item, defaultItem, currentItemId) {
+      els.closeDetailModal.setAttribute('data-current-item', currentItemId);
+      els.mLetter.innerHTML = getItemValue(item, defaultItem, 'letter');
+      const prefixStr = getItemValue(item, defaultItem, 'prefix');
+      const labelStr = getItemValue(item, defaultItem, 'label');
+      if (prefixStr) {
+        els.mTitle.innerHTML = `<em>${prefixStr}</em> ${labelStr}`;
       } else {
-        els.mTitle.textContent = item.label;
+        els.mTitle.innerHTML = labelStr;
       }
 
       // Populate Roles Pills
       els.mRoles.innerHTML = '';
-      if (item.roles && item.roles.length > 0) {
-        item.roles.forEach(role => {
+      const roles = getItemValue(item, defaultItem, 'roles');
+      if (roles && roles.length > 0) {
+        roles.forEach(role => {
           const pill = document.createElement('span');
           pill.className = 'role-pill';
-          pill.textContent = role;
+          pill.innerHTML = role;
           els.mRoles.appendChild(pill);
         });
       }
 
-      els.mDesc.textContent = item.desc;
+      els.mDesc.innerHTML = getItemValue(item, defaultItem, 'desc');
       els.detailModal.classList.add('active');
+      // Move keyboard focus to the close button for accessibility
+      requestAnimationFrame(() => {
+        if (els.closeDetailModal) els.closeDetailModal.tabIndex = 0;
+        els.closeDetailModal?.focus();
+      });
     }
 
     function closeDetailModal() {
       els.detailModal.classList.remove('active');
+      const currentItemId = els.closeDetailModal.getAttribute('data-current-item');
+      const currentItem = document.getElementById(currentItemId);
+      currentItem?.focus();
+      els.closeDetailModal.removeAttribute('data-current-item');
+      if (els.closeDetailModal) els.closeDetailModal.tabIndex = -1;
     }
 
     // 2. Language Modal
     function openLangModal() {
       // Rebuild list to show active state
-      els.langList.innerHTML = languages.map(lang => {
-        const isActive = lang.code === state.lang;
+      els.langList.innerHTML = LANGUAGES.map(lang => {
+        const isActive = lang.code === normalizeLang(state.lang);
         return `
-                    <button class="lang-btn ${isActive ? 'active' : ''}" onclick="selectLanguage('${lang.code}')">
+                    <button tabindex="0" class="lang-btn ${isActive ? 'active' : ''}" onclick="selectLanguage('${lang.code}')">
                         <span>${lang.name}</span>
-                        <svg class="check icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        <svg class="check icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
                     </button>
                 `;
       }).join('');
       els.langModal.classList.add('active');
+      // Move focus to the close button for accessibility
+      requestAnimationFrame(() => {
+        if (els.closeLangModal) els.closeLangModal.tabIndex = 0;
+        els.closeLangModal?.focus();
+      });
     }
 
     function closeLangModal() {
       els.langModal.classList.remove('active');
+      if (els.closeLangModal) els.closeLangModal.tabIndex = -1;
+      // move focus back to language select button
+      requestAnimationFrame(() => {
+        els.langBtn?.focus();
+      });
     }
 
     // Exposed Global Function for HTML onclick
     window.selectLanguage = (code) => {
-      state.lang = code;
+      state.lang = normalizeLang(code);
       localStorage.setItem('raadddr_lang', state.lang);
       updateContent();
       closeLangModal();
@@ -1010,7 +909,34 @@
     });
 
     // Global Escape Key Closes Top Modal
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener('keyup', (e) => {
+      // When detail modal is open, keep Tab focus on the close button
+      if (e.key === 'Tab' && els.detailModal.classList.contains('active')) {
+        e.preventDefault();
+        els.closeDetailModal?.focus();
+        return;
+      }
+
+      if (e.key === 'Tab' && els.langModal.classList.contains('active')) {
+        // check if the focus is outside the langModal
+        const focusedElement = document.activeElement;
+        const isFocusInside = els.langModal.contains(focusedElement);
+        if (!isFocusInside) {
+          els.closeLangModal?.focus();
+        }
+        return;
+      }
+
+      if (e.key === 'Tab' && els.detailModal.classList.contains('active')) {
+        // check if the focus is outside the detailModal
+        const focusedElement = document.activeElement;
+        const isFocusInside = els.detailModal.contains(focusedElement);
+        if (!isFocusInside) {
+          els.closeDetailModal?.focus();
+        }
+        return;
+      }
+
       if (e.key === 'Escape') {
         if (els.langModal.classList.contains('active')) {
           closeLangModal();
@@ -1024,7 +950,6 @@
     updateTheme();
     updateContent();
 
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>
