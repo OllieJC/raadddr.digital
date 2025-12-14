@@ -380,7 +380,7 @@ async function main() {
 
   await buildIndex();
   await copyAssets();
-  await copyRecursive(path.join(root, "_headers"), distDir);
+  await copyRecursive(path.join(root, "_headers"), path.join(distDir, "_headers"));
   const llmsText = generateLLMsText();
   await fs.writeFile(path.join(distDir, "llms.txt"), llmsText, "utf8");
 }
