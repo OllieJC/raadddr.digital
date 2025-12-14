@@ -6,30 +6,40 @@
     <title></title>
     <meta name="description"
           content="RAADDDR: An activity framework for resilient digital technology, products and services.">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="https://raadddr.digital/">
     <meta name="keywords"
-          content="RAADDDR, digital, technology, framework, activities, products, services, research, architect, analyse, design, develop, deliver, run">
+          content="RAADDDR, digital, technology, framework, activities, products, services, digital profession, information technology, agile, service delivery, iterative">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
           rel="stylesheet">
     <link rel="icon"
           type="image/png"
-          href="/assets/favicon-96x96.png"
+          href="assets/favicon-96x96.png"
           sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
     <link rel="shortcut icon" href="favicon.ico" />
     <link rel="apple-touch-icon"
           sizes="180x180"
-          href="/assets/apple-touch-icon.png" />
+          href="assets/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="RAADDDR" />
-    <link rel="manifest" href="/assets/site.webmanifest" />
+    <link rel="manifest" href="assets/site.webmanifest" />
+    <link rel="alternate"
+          type="text/plain"
+          href="llms.txt"
+          title="LLM context summary">
     <!-- METATAGS -->
     <link rel="stylesheet" href="assets/main.css">
   </head>
   <body>
     <!-- DETAIL Modal -->
     <div id="detailModal" class="modal-overlay">
-      <div class="modal-content">
+      <div class="modal-content"
+           role="dialog"
+           aria-modal="true"
+           aria-labelledby="mTitle"
+           aria-describedby="mDesc">
         <button class="modal-close"
                 type="button"
                 id="closeDetailModal"
@@ -50,7 +60,11 @@
     </div>
     <!-- LANGUAGE Modal -->
     <div id="langModal" class="modal-overlay">
-      <div class="modal-content">
+      <div class="modal-content"
+           role="dialog"
+           aria-modal="true"
+           aria-labelledby="langModalTitle"
+           aria-describedby="langModalDesc">
         <button class="modal-close"
                 type="button"
                 tabindex="-1"
@@ -144,7 +158,7 @@
                 <span class="letter" data-i18n="designLetter"></span>
                 <span class="em" data-i18n="designPrefix"></span>
                 <span data-i18n="designLabel"></span>
-              </h2>
+              </button>
               <div class="visually-hidden">
                 <div class="role-container" id="designRoles"></div>
                 <p data-i18n="designDesc"></p>
@@ -183,20 +197,21 @@
                 <p data-i18n="runDesc"></p>
               </div>
             </section>
-          </article>
-        </main>
-        <footer class="site-footer">
-          <span data-i18n="footerLegal">This work is published for the Public Domain from the United Kingdom.</span>
-          <br>
-          <br>
-          <a href="https://creativecommons.org/publicdomain/zero/1.0/"
-             target="_blank"
-             rel="noopener noreferrer">CC0 1.0 Universal</a> •
-          <a href="https://unlicense.org/"
-             target="_blank"
-             rel="noopener noreferrer">The Unlicense</a>
-        </footer>
-      </div>
-      <script type="module" src="assets/main.js"></script>
-    </body>
-  </html>
+          </div>
+        </article>
+      </main>
+      <footer class="site-footer">
+        <span data-i18n="footerLegal">This work is published for the Public Domain from the United Kingdom.</span>
+        <br>
+        <br>
+        <a href="https://creativecommons.org/publicdomain/zero/1.0/"
+           target="_blank"
+           rel="noopener noreferrer">CC0 1.0 Universal</a> •
+        <a href="https://unlicense.org/"
+           target="_blank"
+           rel="noopener noreferrer">The Unlicense</a>
+      </footer>
+    </div>
+    <script type="module" src="assets/main.js"></script>
+  </body>
+</html>

@@ -123,6 +123,35 @@ function getActivity(langCode, key) {
   };
 }
 
+const FOCUSABLE_SELECTOR =
+  'button:not([disabled]):not([tabindex="-1"]), [href]:not([tabindex="-1"]), input:not([disabled]):not([tabindex="-1"]), select:not([disabled]):not([tabindex="-1"]), textarea:not([disabled]):not([tabindex="-1"]), [tabindex]:not([tabindex="-1"])';
+
+function getFocusableElements(container) {
+  if (!container) return [];
+  return Array.from(container.querySelectorAll(FOCUSABLE_SELECTOR)).filter(
+    (el) =>
+      !el.hasAttribute("disabled") &&
+      el.getAttribute("aria-hidden") !== "true" &&
+      el.offsetParent !== null
+  );
+}
+
+function trapFocus(container, event) {
+  const focusables = getFocusableElements(container);
+  if (!focusables.length) return;
+  const first = focusables[0];
+  const last = focusables[focusables.length - 1];
+  const isShift = event.shiftKey;
+
+  if (isShift && document.activeElement === first) {
+    last.focus();
+    event.preventDefault();
+  } else if (!isShift && document.activeElement === last) {
+    first.focus();
+    event.preventDefault();
+  }
+}
+
 // --- Rendering ---
 function updateContent() {
   const langCode = normalizeLang(state.lang);
@@ -137,6 +166,7 @@ function updateContent() {
     el.innerHTML = getText(langCode, key);
   });
 
+  document.title = getText(langCode, "title");
   els.langLabel.textContent = currentLangName;
   updateThemeLabel();
   els.html.setAttribute("lang", langCode);
@@ -198,7 +228,8 @@ function openDetailModal(sender) {
   els.detailModal.classList.add("active");
   requestAnimationFrame(() => {
     if (els.closeDetailModal) els.closeDetailModal.tabIndex = 0;
-    els.closeDetailModal?.focus();
+    const focusables = getFocusableElements(els.detailModal);
+    (focusables[0] || els.closeDetailModal)?.focus();
   });
 }
 
@@ -227,7 +258,12 @@ function openLangModal() {
   els.langModal.classList.add("active");
   requestAnimationFrame(() => {
     if (els.closeLangModal) els.closeLangModal.tabIndex = 0;
-    els.closeLangModal?.focus();
+    const focusables = getFocusableElements(els.langModal);
+    const nextFocus =
+      focusables.find((el) => el.classList.contains("lang-btn")) ||
+      focusables[0] ||
+      els.closeLangModal;
+    nextFocus?.focus();
   });
 }
 
@@ -281,13 +317,11 @@ function init() {
   document.addEventListener("keydown", (e) => {
     if (e.key === "Tab") {
       if (els.detailModal.classList.contains("active")) {
-        e.preventDefault();
-        els.closeDetailModal?.focus();
+        trapFocus(els.detailModal, e);
         return;
       }
       if (els.langModal.classList.contains("active")) {
-        e.preventDefault();
-        trapFocusInLangModal(e.shiftKey);
+        trapFocus(els.langModal, e);
         return;
       }
     }
@@ -330,11 +364,11 @@ function init() {
   }
 }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
-  } else {
-    init();
-  }
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
+} else {
+  init();
+}
 
 function markActiveActivity(key) {
   ACTIVITY_KEYS.forEach((k) => {
@@ -357,30 +391,4 @@ function clearActiveActivity() {
     section.removeAttribute("aria-expanded");
     section.removeAttribute("data-active");
   });
-}
-
-function trapFocusInLangModal(isShift) {
-  const focusables = Array.from(
-    els.langModal.querySelectorAll(
-      'button:not([tabindex="-1"]), [href], [tabindex]:not([tabindex="-1"])'
-    )
-  ).filter(
-    (el) =>
-      !el.hasAttribute("disabled") &&
-      el.getAttribute("aria-hidden") !== "true" &&
-      el.offsetParent !== null
-  );
-
-  if (!focusables.length) return;
-
-  const active = document.activeElement;
-  let index = focusables.indexOf(active);
-
-  if (isShift) {
-    index = index <= 0 ? focusables.length - 1 : index - 1;
-  } else {
-    index = index === focusables.length - 1 ? 0 : index + 1;
-  }
-
-  focusables[index].focus();
 }

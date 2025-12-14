@@ -251,7 +251,7 @@ const buildIndex = async () => {
     );
 
     indexContent = indexContent.replace(
-      new RegExp(`data-i18n="${key}Description"><`),
+      new RegExp(`data-i18n="${key}Desc"><`),
       `data-i18n="${key}Desc">${descVal}<`
     );
 
@@ -266,6 +266,7 @@ const buildIndex = async () => {
   });
 
   const metaItems = [];
+
   Object.entries(TRANSLATIONS).forEach(([lang, data]) => {
     metaItems.push(
       `<link rel="alternate" type="text/markdown" href="https://raadddr.digital/raadddr.${lang}.md" hreflang="${lang}">`
