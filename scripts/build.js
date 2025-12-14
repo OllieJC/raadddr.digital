@@ -395,14 +395,9 @@ async function main() {
 
   await buildIndex();
   await copyAssets();
-  await copyRecursive(
-    path.join(root, "_headers"),
-    path.join(distDir, "_headers")
-  );
-  await copyRecursive(
-    path.join(root, "robots.txt"),
-    path.join(distDir, "robots.txt")
-  );
+  for (const fn of ["_headers", "robots.txt", "favicon.ico"]) {
+    await copyRecursive(path.join(root, fn), path.join(distDir, fn));
+  }
   const llmsText = generateLLMsText();
   await fs.writeFile(path.join(distDir, "llms.txt"), llmsText, "utf8");
   await buildSitemap();
