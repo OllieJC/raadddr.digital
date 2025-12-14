@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAADDDR - Digital Activities</title>
+    <title></title>
     <meta name="description"
           content="RAADDDR: An activity framework for resilient digital technology, products and services.">
     <meta name="keywords"
@@ -23,523 +23,15 @@
           href="/assets/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="RAADDDR" />
     <link rel="manifest" href="/assets/site.webmanifest" />
-    <style>
-    /* --- CSS Variables & Theming --- */
-    :root {
-      /* Dark Mode (Default) - HIGH CONTRAST */
-      --bg-color: #0f1b2d;
-      --bg-gradient: radial-gradient(circle at 15% 50%, rgba(93, 225, 230, 0.15), transparent 25%),
-        radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.15), transparent 25%);
-
-      /* Text Colors: Crisp White */
-      --text-main: #FFFFFF;
-      --text-muted: #E5E5E5;
-
-      --accent: #5de1e6;
-      --card-bg: rgba(255, 255, 255, 0.03);
-      --card-border: rgba(255, 255, 255, 0.15);
-      --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-
-      --chip-bg: rgba(255, 255, 255, 0.08);
-      --chip-bg-hover: rgba(255, 255, 255, 0.15);
-      --chip-border: rgba(255, 255, 255, 0.2);
-
-      --glass-blur: blur(16px);
-      --transition-speed: 0.3s;
-    }
-
-    [data-theme="light"] {
-      /* Light Mode Overrides - HIGH CONTRAST */
-      --bg-color: #f0f4f8;
-      --bg-gradient: radial-gradient(circle at 15% 50%, rgba(93, 225, 230, 0.4), transparent 30%),
-        radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.25), transparent 30%);
-
-      /* Text Colors: Crisp Black */
-      --text-main: #000000;
-      --text-muted: #1A1A1A;
-
-      --accent: #067a96;
-
-      --card-bg: rgba(255, 255, 255, 0.75);
-      --card-border: rgba(0, 0, 0, 0.1);
-      --card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
-
-      --chip-bg: rgba(255, 255, 255, 0.8);
-      --chip-bg-hover: #FFFFFF;
-      --chip-border: rgba(0, 0, 0, 0.1);
-    }
-
-    /* --- Reset & Base --- */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Space Grotesk', system-ui, sans-serif;
-      background-color: var(--bg-color);
-      background-image: var(--bg-gradient);
-      background-attachment: fixed;
-      color: var(--text-main);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 1rem;
-      transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
-    }
-
-    /* --- Layout --- */
-    .wrapper {
-      width: 100%;
-      max-width: 680px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      /* Gap between card and footer */
-    }
-
-    /* --- Controls Header (Top Right) --- */
-    .controls {
-      display: flex;
-      gap: 1rem;
-      justify-content: flex-end;
-      align-self: stretch;
-      width: 100%;
-      flex-wrap: wrap;
-    }
-
-    .control-btn {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      color: var(--text-main);
-      padding: 8px 16px;
-      border-radius: 20px;
-      cursor: pointer;
-      backdrop-filter: var(--glass-blur);
-      -webkit-backdrop-filter: var(--glass-blur);
-      font-family: inherit;
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .control-btn:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateY(-2px);
-      border-color: var(--accent);
-    }
-
-    .control-text {
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
-    /* --- Main Card --- */
-    .glass-card {
-      background: var(--card-bg);
-      backdrop-filter: var(--glass-blur);
-      -webkit-backdrop-filter: var(--glass-blur);
-      border: 1px solid var(--card-border);
-      border-radius: 24px;
-      padding: 3rem 2rem;
-      box-shadow: var(--card-shadow);
-      position: relative;
-      overflow: hidden;
-      transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    /* Glow Effect inside card */
-    .glow-spot {
-      position: absolute;
-      top: -50px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 200px;
-      height: 200px;
-      background: var(--accent);
-      filter: blur(80px);
-      opacity: 0.15;
-      pointer-events: none;
-      border-radius: 50%;
-    }
-
-    /* --- Logo Styles --- */
-    .logo-container {
-      margin-bottom: 24px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .logo-svg {
-      width: 80px;
-      height: 80px;
-      fill: var(--accent);
-      filter: drop-shadow(0 0 10px rgba(93, 225, 230, 0.3));
-      animation: spin-slow 20s linear infinite;
-    }
-
-    @keyframes spin-slow {
-      from {
-        transform: rotate(0deg);
-      }
-
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .logo-svg {
-        animation: none !important;
-      }
-
-      .grid-item {
-        transition: none !important;
-      }
-
-      .grid-item:hover,
-      .grid-item:active {
-        transform: none !important;
-      }
-
-      .modal-overlay,
-      .modal-content {
-        transition: none !important;
-      }
-    }
-
-    h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      line-height: 1.1;
-      margin-bottom: 1rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      text-align: center;
-    }
-
-    .description {
-      font-size: 1.125rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 2.5rem;
-      max-width: 540px;
-      margin-left: auto;
-      margin-right: auto;
-      font-weight: 400;
-    }
-
-    /* --- The Grid (2 Columns) --- */
-    .acronym-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 0;
-      /* Removing bottom margin as footer is external now */
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .grid-item {
-      background: var(--chip-bg);
-      border: 1px solid var(--chip-border);
-      padding: 16px 12px;
-      border-radius: 16px;
-      color: var(--text-main);
-      font-weight: 600;
-      font-size: 1rem;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      user-select: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-      white-space: nowrap;
-    }
-
-    .grid-item:hover {
-      transform: translateY(-4px);
-      background: var(--chip-bg-hover);
-      border-color: var(--accent);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .grid-item:active {
-      transform: translateY(-1px);
-    }
-
-    .grid-item:last-child {
-      grid-column: span 2;
-      width: 50%;
-      margin: 0 auto;
-    }
-
-    /* Letter highlight */
-    .grid-item .letter {
-      color: var(--accent);
-      font-weight: 800;
-      font-size: 1.1em;
-      margin-right: 1px;
-    }
-
-    .grid-item em {
-      font-style: italic;
-      opacity: 1;
-      margin-right: 4px;
-      font-family: inherit;
-      font-weight: 400;
-    }
-
-    /* --- Modals (General) --- */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-      z-index: 1000;
-    }
-
-    .modal-overlay.active {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    .modal-content {
-      background: var(--bg-color);
-      width: 90%;
-      max-width: 500px;
-      /* Slightly wider for roles */
-      padding: 2.5rem 2rem;
-      border-radius: 20px;
-      border: 2px solid var(--accent);
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
-      transform: scale(0.95);
-      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      text-align: left;
-      position: relative;
-      max-height: 90vh;
-      overflow-y: auto;
-    }
-
-    .modal-overlay.active .modal-content {
-      transform: scale(1);
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: transparent;
-      border: none;
-      color: var(--text-main);
-      cursor: pointer;
-      padding: 8px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s;
-      z-index: 10;
-    }
-
-    .modal-close:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    /* --- Detail Modal Specifics --- */
-    .modal-header {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 0.5rem;
-      color: var(--accent);
-      justify-content: center;
-    }
-
-    .modal-big-letter {
-      font-size: 3rem;
-      font-weight: 700;
-      line-height: 1;
-      padding-right: 0.75rem;
-    }
-
-    .modal-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-
-    .modal-title em {
-      font-family: inherit;
-      font-style: italic;
-      font-weight: 400;
-      margin-right: 4px;
-    }
-
-    /* Role Pills Container */
-    .modal-roles {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 1.5rem;
-      justify-content: center;
-    }
-
-    .role-pill {
-      font-size: 0.75rem;
-      padding: 4px 10px;
-      border-radius: 20px;
-      background: rgba(93, 225, 230, 0.1);
-      color: var(--accent);
-      border: 1px solid rgba(93, 225, 230, 0.2);
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    .modal-desc {
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 0;
-      font-size: 1.1rem;
-      font-weight: 400;
-    }
-
-    /* --- Footer (CC0) --- */
-    .site-footer {
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.8rem;
-      padding: 1rem;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      backdrop-filter: var(--glass-blur);
-      -webkit-backdrop-filter: var(--glass-blur);
-      border-radius: 16px;
-    }
-
-    .site-footer a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-      margin: 0 4px;
-    }
-
-    .site-footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* --- Language List --- */
-    .lang-list {
-      display: grid;
-      gap: 12px;
-      margin-top: 1rem;
-    }
-
-    .lang-btn {
-      background: var(--chip-bg);
-      border: 1px solid var(--chip-border);
-      padding: 16px;
-      border-radius: 12px;
-      color: var(--text-main);
-      text-align: left;
-      cursor: pointer;
-      font-family: inherit;
-      font-size: 1rem;
-      font-weight: 600;
-      transition: all 0.2s;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .lang-btn:hover {
-      background: var(--chip-bg-hover);
-      border-color: var(--accent);
-    }
-
-    .lang-btn.active {
-      border-color: var(--accent);
-      background: rgba(93, 225, 230, 0.15);
-    }
-
-    .lang-btn .check {
-      opacity: 0;
-      color: var(--accent);
-    }
-
-    .lang-btn.active .check {
-      opacity: 1;
-    }
-
-    /* --- Icons --- */
-    .icon {
-      width: 18px;
-      height: 18px;
-      fill: currentColor;
-      flex-shrink: 0;
-    }
-
-    .icon-lg {
-      width: 24px;
-      height: 24px;
-      fill: currentColor;
-    }
-
-    @media (max-width: 600px) {
-      .controls {
-        width: 100%;
-        justify-content: center;
-        align-self: center;
-      }
-
-      .glass-card {
-        padding: 2rem 1.5rem;
-      }
-
-      .grid-item:last-child {
-        width: 100%;
-      }
-    }
-
-    @media (max-width: 350px) {
-      h1 {
-        font-size: 2rem;
-      }
-
-      .acronym-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .grid-item:last-child {
-        grid-column: auto;
-        width: 100%;
-        margin: 0;
-      }
-    }
-    </style>
+    <!-- METATAGS -->
+    <link rel="stylesheet" href="assets/main.css">
   </head>
   <body>
     <!-- DETAIL Modal -->
     <div id="detailModal" class="modal-overlay">
       <div class="modal-content">
         <button class="modal-close"
+                type="button"
                 id="closeDetailModal"
                 aria-label="Close details"
                 tabindex="-1">
@@ -560,6 +52,7 @@
     <div id="langModal" class="modal-overlay">
       <div class="modal-content">
         <button class="modal-close"
+                type="button"
                 tabindex="-1"
                 id="closeLangModal"
                 aria-label="Close language selection">
@@ -567,16 +60,8 @@
             <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
           </svg>
         </button>
-        <h2 id="langModalTitle"
-            data-i18n="langModalTitle"
-            style="margin-bottom: 0.5rem;
-                   font-size: 1.5rem;
-                   font-weight: 700">Select Language</h2>
-        <p id="langModalDesc"
-           data-i18n="langModalDesc"
-           style="color: var(--text-muted);
-                  margin-bottom: 1.5rem;
-                  font-weight: 400">Choose your preferred interface language.</p>
+        <h2 id="langModalTitle" data-i18n="langModalTitle">Select Language</h2>
+        <p id="langModalDesc" data-i18n="langModalDesc">Choose your preferred interface language.</p>
         <div class="lang-list" id="langList">
           <!-- Populated by JS -->
         </div>
@@ -608,349 +93,110 @@
       <main>
         <article class="glass-card">
           <div class="logo-container">
-            <img src="icon.svg"
+            <img src="assets/icon.svg"
                  alt="RAADDDR Logo"
                  class="logo-svg"
                  width="100"
                  height="100" />
           </div>
           <div class="glow-spot"></div>
-          <h1 data-i18n="title"></h1>
-          <p class="description" tabindex="0" data-i18n="description"></p>
-          <section class="acronym-grid" aria-label="RAADDDR Principles">
-            <!-- Content populated by JS -->
+          <section aria-labelledby="title">
+            <h1 id="title" data-i18n="title"></h1>
+            <p class="description" tabindex="0" data-i18n="description"></p>
+            <p class="choose-activity" tabindex="0" data-i18n="chooseActivity"></p>
           </section>
-        </article>
-      </main>
-      <footer class="site-footer">
-        <span data-i18n="footerLegal">This work is published for the Public Domain from the United Kingdom.</span>
-        <br>
-        <br>
-        <a href="https://creativecommons.org/publicdomain/zero/1.0/"
-           target="_blank"
-           rel="noopener noreferrer">CC0 1.0 Universal</a> •
-        <a href="https://unlicense.org/"
-           target="_blank"
-           rel="noopener noreferrer">The Unlicense</a>
-      </footer>
-    </div>
-    <script type="module">
-    import { TRANSLATIONS } from './translations.js';
-
-    // --- Configuration & Data ---
-
-    // Define available languages
-    const LANGUAGES = [
-      { code: 'en-gb', name: 'English (UK)' },
-      { code: 'en-us', name: 'English (US)' },
-      { code: 'fr', name: 'Français' }
-    ];
-
-    const DEFAULT_LANG = 'en-gb';
-
-    function normalizeLang(langCode) {
-      return (langCode || DEFAULT_LANG).toLowerCase();
-    }
-
-    // --- State Management ---
-
-    // Auto-detect Language Function
-    function detectLanguage() {
-      // Check LocalStorage first
-      const stored = localStorage.getItem('raadddr_lang');
-      if (stored) return normalizeLang(stored);
-
-      // Check Browser Language
-      if (navigator.language) {
-        return normalizeLang(navigator.language);
-      }
-
-      // Default to British English if nothing matches
-      return DEFAULT_LANG;
-    }
-
-    const state = {
-      lang: detectLanguage(),
-      theme: localStorage.getItem('raadddr_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-    };
-
-    // --- DOM Elements ---
-    const els = {
-      html: document.documentElement,
-      grid: document.querySelector('.acronym-grid'),
-
-      // Language Controls
-      langBtn: document.getElementById('langBtn'),
-      langLabel: document.getElementById('langLabel'),
-      langModal: document.getElementById('langModal'),
-      langList: document.getElementById('langList'),
-      closeLangModal: document.getElementById('closeLangModal'),
-
-      // Theme Controls
-      themeToggle: document.getElementById('themeToggle'),
-      themeLabel: document.getElementById('themeLabel'),
-      themeIcon: document.getElementById('themeIcon'),
-
-      // Detail Modal
-      detailModal: document.getElementById('detailModal'),
-      closeDetailModal: document.getElementById('closeDetailModal'),
-      mLetter: document.getElementById('mLetter'),
-      mTitle: document.getElementById('mTitle'),
-      mRoles: document.getElementById('mRoles'),
-      mDesc: document.getElementById('mDesc'),
-
-      i18nTargets: document.querySelectorAll('[data-i18n]')
-    };
-
-    // Make close buttons unfocusable until their modal is active
-    if (els.closeDetailModal) els.closeDetailModal.tabIndex = -1;
-    if (els.closeLangModal) els.closeLangModal.tabIndex = -1;
-
-    // --- Core Functions ---
-
-    // Helper: Resolve a locale object without applying fallbacks
-    function resolveLocale(langCode) {
-      const normalized = normalizeLang(langCode);
-      return TRANSLATIONS[normalized] || TRANSLATIONS[normalized.split('-')[0]];
-    }
-
-    function getItemValue(item, defaultItem, key) {
-      if (item && item[key]) {
-        return getHtmlValue(item[key]);
-      }
-      return getHtmlValue(defaultItem[key]);
-    }
-
-    function getHtmlValue(value) {
-      if (value !== undefined && value !== null) {
-        if (typeof value === 'string') {
-          value = value.replaceAll(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-          value = value.replaceAll('\n', '<br>');
-          return value;
-        }
-      }
-      return value;
-    }
-
-    function updateContent() {
-      const langCode = normalizeLang(state.lang);
-      const currentLang = LANGUAGES.find(l => l.code === langCode) || LANGUAGES.find(l => langCode.startsWith(l.code)) || LANGUAGES[0];
-      const currentLangName = currentLang ? currentLang.name : '';
-
-      // Update simple text elements
-      els.i18nTargets.forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        el.innerHTML = getItemValue(TRANSLATIONS[langCode], TRANSLATIONS[DEFAULT_LANG], key);
-      });
-
-      // Update Language Label in Header
-      els.langLabel.textContent = currentLangName;
-
-      // Update Theme Label based on current Lang + Theme
-      updateThemeLabel();
-
-      els.html.setAttribute('lang', langCode);
-
-      // Rebuild Grid
-      els.grid.innerHTML = '';
-      Object.keys(TRANSLATIONS[DEFAULT_LANG].items).forEach((key) => {
-        const btn = document.createElement('button');
-        btn.id = `grid-item-${key}`;
-        btn.type = 'button';
-        btn.className = 'grid-item';
-
-        const item = TRANSLATIONS[langCode]
-          && TRANSLATIONS[langCode].items
-          && TRANSLATIONS[langCode].items[key] 
-          ? TRANSLATIONS[langCode].items[key] : null;
-        const defaultItem = TRANSLATIONS[DEFAULT_LANG].items[key];
-
-        // Logic for "Le Design" -> <em>Le</em> <span class="letter">D</span>esign
-        let html = '';
-        const prefixStr = getItemValue(item, defaultItem, 'prefix');
-        if (prefixStr) {
-          html += `<em>${prefixStr}</em>`;
-        }
-        const letterStr = getItemValue(item, defaultItem, 'letter');
-        html += `<span class="letter">${letterStr}</span>`;
-
-        const labelRemainder = getItemValue(item, defaultItem, 'label');
-        html += labelRemainder.substring(1); // Rest of the word
-
-        btn.innerHTML = html;
-
-        // Add click listener for modal
-        // Click or keyboard (native button behavior handles Enter/Space)
-        btn.addEventListener('click', () => openDetailModal(item, defaultItem, btn.id));
-
-        els.grid.appendChild(btn);
-      });
-    }
-
-    function updateThemeLabel() {
-      const labelKey = state.theme === 'dark' ? 'themeLabelDark' : 'themeLabelLight';
-      els.themeLabel.innerHTML = getItemValue(TRANSLATIONS[state.lang], TRANSLATIONS[DEFAULT_LANG], labelKey);
-    }
-
-    // --- Modal Logic ---
-
-    // 1. Detail Modal
-    function openDetailModal(item, defaultItem, currentItemId) {
-      els.closeDetailModal.setAttribute('data-current-item', currentItemId);
-      els.mLetter.innerHTML = getItemValue(item, defaultItem, 'letter');
-      const prefixStr = getItemValue(item, defaultItem, 'prefix');
-      const labelStr = getItemValue(item, defaultItem, 'label');
-      if (prefixStr) {
-        els.mTitle.innerHTML = `<em>${prefixStr}</em> ${labelStr}`;
-      } else {
-        els.mTitle.innerHTML = labelStr;
-      }
-
-      // Populate Roles Pills
-      els.mRoles.innerHTML = '';
-      const roles = getItemValue(item, defaultItem, 'roles');
-      if (roles && roles.length > 0) {
-        roles.forEach(role => {
-          const pill = document.createElement('span');
-          pill.className = 'role-pill';
-          pill.innerHTML = role;
-          els.mRoles.appendChild(pill);
-        });
-      }
-
-      els.mDesc.innerHTML = getItemValue(item, defaultItem, 'desc');
-      els.detailModal.classList.add('active');
-      // Move keyboard focus to the close button for accessibility
-      requestAnimationFrame(() => {
-        if (els.closeDetailModal) els.closeDetailModal.tabIndex = 0;
-        els.closeDetailModal?.focus();
-      });
-    }
-
-    function closeDetailModal() {
-      els.detailModal.classList.remove('active');
-      const currentItemId = els.closeDetailModal.getAttribute('data-current-item');
-      const currentItem = document.getElementById(currentItemId);
-      currentItem?.focus();
-      els.closeDetailModal.removeAttribute('data-current-item');
-      if (els.closeDetailModal) els.closeDetailModal.tabIndex = -1;
-    }
-
-    // 2. Language Modal
-    function openLangModal() {
-      // Rebuild list to show active state
-      els.langList.innerHTML = LANGUAGES.map(lang => {
-        const isActive = lang.code === normalizeLang(state.lang);
-        return `
-                    <button tabindex="0" class="lang-btn ${isActive ? 'active' : ''}" onclick="selectLanguage('${lang.code}')">
-                        <span>${lang.name}</span>
-                        <svg class="check icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                    </button>
-                `;
-      }).join('');
-      els.langModal.classList.add('active');
-      // Move focus to the close button for accessibility
-      requestAnimationFrame(() => {
-        if (els.closeLangModal) els.closeLangModal.tabIndex = 0;
-        els.closeLangModal?.focus();
-      });
-    }
-
-    function closeLangModal() {
-      els.langModal.classList.remove('active');
-      if (els.closeLangModal) els.closeLangModal.tabIndex = -1;
-      // move focus back to language select button
-      requestAnimationFrame(() => {
-        els.langBtn?.focus();
-      });
-    }
-
-    // Exposed Global Function for HTML onclick
-    window.selectLanguage = (code) => {
-      state.lang = normalizeLang(code);
-      localStorage.setItem('raadddr_lang', state.lang);
-      updateContent();
-      closeLangModal();
-    };
-
-    // --- Theme Logic ---
-
-    function updateTheme() {
-      els.html.setAttribute('data-theme', state.theme);
-      const d = state.theme === 'dark'
-        ? "M12 3a9 9 0 109 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 01-4.4 2.26 5.403 5.403 0 01-5.4-5.4c0-1.81.73-3.44 1.91-4.64C12.92 3.04 12.46 3 12 3zm0-2a11 11 0 0111 11 11 11 0 01-11 11A11 11 0 011 12 11 11 0 0112 1z"
-        : "M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0a.996.996 0 000-1.41l-1.06-1.06zm1.06-10.96a.996.996 0 000-1.41.996.996 0 00-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36a.996.996 0 000 1.41.996.996 0 001.41 0l1.06-1.06c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06z";
-
-      els.themeIcon.querySelector('path').setAttribute('d', d);
-      updateThemeLabel();
-    }
-
-    // --- Event Listeners ---
-
-    // Open Language Modal
-    els.langBtn.addEventListener('click', openLangModal);
-
-    // Close Language Modal
-    els.closeLangModal.addEventListener('click', closeLangModal);
-    els.langModal.addEventListener('click', (e) => {
-      if (e.target === els.langModal) closeLangModal();
-    });
-
-    // Theme Toggle
-    els.themeToggle.addEventListener('click', () => {
-      state.theme = state.theme === 'dark' ? 'light' : 'dark';
-      localStorage.setItem('raadddr_theme', state.theme);
-      updateTheme();
-    });
-
-    // Close Detail Modal
-    els.closeDetailModal.addEventListener('click', closeDetailModal);
-    els.detailModal.addEventListener('click', (e) => {
-      if (e.target === els.detailModal) closeDetailModal();
-    });
-
-    // Global Escape Key Closes Top Modal
-    document.addEventListener('keyup', (e) => {
-      // When detail modal is open, keep Tab focus on the close button
-      if (e.key === 'Tab' && els.detailModal.classList.contains('active')) {
-        e.preventDefault();
-        els.closeDetailModal?.focus();
-        return;
-      }
-
-      if (e.key === 'Tab' && els.langModal.classList.contains('active')) {
-        // check if the focus is outside the langModal
-        const focusedElement = document.activeElement;
-        const isFocusInside = els.langModal.contains(focusedElement);
-        if (!isFocusInside) {
-          els.closeLangModal?.focus();
-        }
-        return;
-      }
-
-      if (e.key === 'Tab' && els.detailModal.classList.contains('active')) {
-        // check if the focus is outside the detailModal
-        const focusedElement = document.activeElement;
-        const isFocusInside = els.detailModal.contains(focusedElement);
-        if (!isFocusInside) {
-          els.closeDetailModal?.focus();
-        }
-        return;
-      }
-
-      if (e.key === 'Escape') {
-        if (els.langModal.classList.contains('active')) {
-          closeLangModal();
-        } else if (els.detailModal.classList.contains('active')) {
-          closeDetailModal();
-        }
-      }
-    });
-
-    // --- Initialization ---
-    updateTheme();
-    updateContent();
-
-    </script>
-  </body>
-</html>
+          <div class="acronym-grid">
+            <section id="research" aria-labelledby="researchButton">
+              <button id="researchButton" class="grid-item" role="heading" aria-level="2">
+                <span class="letter" data-i18n="researchLetter"></span>
+                <span class="em" data-i18n="researchPrefix"></span>
+                <span data-i18n="researchLabel"></span>
+              </button>
+              <div class="visually-hidden">
+                <div class="role-container" id="researchRoles"></div>
+                <p data-i18n="researchDesc"></p>
+              </div>
+            </section>
+            <section id="analyse" aria-labelledby="analyseButton">
+              <button id="analyseButton" class="grid-item" role="heading" aria-level="2">
+                <span class="letter" data-i18n="analyseLetter"></span>
+                <span class="em" data-i18n="analysePrefix"></span>
+                <span data-i18n="analyseLabel"></span>
+              </button>
+              <div class="visually-hidden">
+                <div class="role-container" id="analyseRoles"></div>
+                <p data-i18n="analyseDesc"></p>
+              </div>
+            </section>
+            <section id="architect" aria-labelledby="architectButton">
+              <button id="architectButton" class="grid-item" role="heading" aria-level="2">
+                <span class="letter" data-i18n="architectLetter"></span>
+                <span class="em" data-i18n="architectPrefix"></span>
+                <span data-i18n="architectLabel"></span>
+              </button>
+              <div class="visually-hidden">
+                <div class="role-container" id="architectRoles"></div>
+                <p data-i18n="architectDesc"></p>
+              </div>
+            </section>
+            <section id="design" aria-labelledby="designButton">
+              <button id="designButton" class="grid-item" role="heading" aria-level="2">
+                <span class="letter" data-i18n="designLetter"></span>
+                <span class="em" data-i18n="designPrefix"></span>
+                <span data-i18n="designLabel"></span>
+              </h2>
+              <div class="visually-hidden">
+                <div class="role-container" id="designRoles"></div>
+                <p data-i18n="designDesc"></p>
+              </div>
+            </section>
+            <section id="develop" aria-labelledby="developButton">
+              <button id="developButton" class="grid-item" role="heading" aria-level="2">
+                <span class="letter" data-i18n="developLetter"></span>
+                <span class="em" data-i18n="developPrefix"></span>
+                <span data-i18n="developLabel"></span>
+              </button>
+              <div class="visually-hidden">
+                <div class="role-container" id="developRoles"></div>
+                <p data-i18n="developDesc"></p>
+              </div>
+            </section>
+            <section id="deliver" aria-labelledby="deliverButton">
+              <button id="deliverButton" class="grid-item" role="heading" aria-level="2">
+                <span class="letter" data-i18n="deliverLetter"></span>
+                <span class="em" data-i18n="deliverPrefix"></span>
+                <span data-i18n="deliverLabel"></span>
+              </button>
+              <div class="visually-hidden">
+                <div class="role-container" id="deliverRoles"></div>
+                <p data-i18n="deliverDesc"></p>
+              </div>
+            </section>
+            <section id="run" aria-labelledby="runButton">
+              <button id="runButton" class="grid-item" role="heading" aria-level="2">
+                <span class="letter" data-i18n="runLetter"></span>
+                <span class="em" data-i18n="runPrefix"></span>
+                <span data-i18n="runLabel"></span>
+              </button>
+              <div class="visually-hidden" id="run-modal">
+                <div class="role-container" id="runRoles"></div>
+                <p data-i18n="runDesc"></p>
+              </div>
+            </section>
+          </article>
+        </main>
+        <footer class="site-footer">
+          <span data-i18n="footerLegal">This work is published for the Public Domain from the United Kingdom.</span>
+          <br>
+          <br>
+          <a href="https://creativecommons.org/publicdomain/zero/1.0/"
+             target="_blank"
+             rel="noopener noreferrer">CC0 1.0 Universal</a> •
+          <a href="https://unlicense.org/"
+             target="_blank"
+             rel="noopener noreferrer">The Unlicense</a>
+        </footer>
+      </div>
+      <script type="module" src="assets/main.js"></script>
+    </body>
+  </html>

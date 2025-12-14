@@ -1,0 +1,33 @@
+{
+  "name": "raadddr.digital",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node scripts/build.js",
+    "serve": "http-server dist/ -p 8005 -c-1",
+    "watch": "chokidar \"index.html\" \"assets/**/*\" \"scripts/build.js\" -c \"node scripts/build.js\"",
+    "dev": "npm run build && concurrently \"npm run watch\" \"npm run serve\""
+  
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OllieJC/raadddr.digital.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/OllieJC/raadddr.digital/issues"
+  },
+  "homepage": "https://github.com/OllieJC/raadddr.digital#readme",
+  "devDependencies": {
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^8.0.0",
+    "csso": "^5.0.5",
+    "http-server": "^14.1.1",
+    "uglify-js": "^3.19.3"
+  }
+}
