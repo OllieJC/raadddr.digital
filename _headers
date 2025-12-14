@@ -1,0 +1,32 @@
+/*
+  # Cache - 1 hour
+  Cache-Control: public, max-age=3600, s-maxage=3600, stale-while-revalidate=60, stale-if-error=86400
+
+  # Robots
+  X-Robots-Tag: all
+
+  # CORS - wide open
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, HEAD, OPTIONS
+  Access-Control-Allow-Headers: *
+  Access-Control-Expose-Headers: *
+  Access-Control-Max-Age: 3600
+  Timing-Allow-Origin: *
+
+  # Referrers - allow
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # Core security - safe defaults
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+
+  # Permissions
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=()
+
+  # Cross-Origin policies - permissive, iframe-safe
+  Cross-Origin-Opener-Policy: unsafe-none
+  Cross-Origin-Embedder-Policy: unsafe-none
+  Cross-Origin-Resource-Policy: cross-origin
+
+  # CSP - report only, deliberately permissive
+  Content-Security-Policy-Report-Only: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors *; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self' blob:;
