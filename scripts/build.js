@@ -73,35 +73,42 @@ const generateLLMsText = () => {
   const lines = [];
   lines.push(`# ${defaultTranslations.title}`);
   lines.push("");
+  lines.push(
+    "> RAADDDR: Research, Analyse, Architect, Design, Develop, Deliver, and Run."
+  );
+  lines.push("");
+
+  lines.push("## Description");
   lines.push(defaultTranslations.description);
   lines.push("");
 
   lines.push("## Full markdown for each language");
   Object.keys(TRANSLATIONS).forEach((lang) => {
-    lines.push(`- ${lang}: ${BASE_URL}/raadddr.${lang}.md`);
+    lines.push(`- [${lang} language](${BASE_URL}/raadddr.${lang}.md)`);
   });
   lines.push("");
 
-  lines.push("## Human URLs");
-  lines.push("- Languages:");
+  lines.push("## Human different language URLs");
   Object.keys(TRANSLATIONS).forEach((lang) => {
-    lines.push(`  - ${lang}: ${BASE_URL}/#${lang}`);
+    lines.push(`  - [language ${lang}](${BASE_URL}/#${lang})`);
   });
-  lines.push("- Activities (defaults to browser language):");
+  lines.push("");
+
+  lines.push("## Human activity URLs (defaults to browser language)");
   ACTIVITY_KEYS.forEach((key) => {
-    lines.push(`  - ${key}: ${BASE_URL}/#${key}`);
+    lines.push(`  - [${key} activity](${BASE_URL}/#${key})`);
   });
   lines.push("");
 
   lines.push("## Meta");
   lines.push(`- Date Published: ${DATEPUBLISHED}`);
   lines.push(`- Date Modified: ${CURRENTDATEONLYSTR}`);
-  lines.push(`- Code Repository: ${CODEREPO}`);
+  lines.push(`- [Code Repository](${CODEREPO})`);
   lines.push(`- Author: ${AUTHOR}`);
-  lines.push(`- License: ${LICENSE}`);
+  lines.push(`- [License](${LICENSE})`);
   lines.push(`- Usage Info: ${USAGEINFO}`);
   lines.push(
-    `- Logo (transparent, but solid black background recommended): ${BASE_URL}/assets/logo.svg`
+    `- Logo (transparent, but solid black background recommended): <${BASE_URL}/assets/logo.svg>`
   );
   lines.push("");
 
