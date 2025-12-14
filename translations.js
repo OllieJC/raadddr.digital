@@ -4,6 +4,9 @@ export const TRANSLATIONS = {
     description:
       "Par numérique, nous entendons l’utilisation des technologies modernes, des données et du design pour créer et exploiter des produits et services qui fonctionnent de bout en bout pour les personnes - clients, usagers, citoyens, collaborateurs, fournisseurs et partenaires. Il ne s’agit pas seulement de sites web ou de systèmes informatiques. Il s’agit de la manière dont une organisation accomplit sa mission : transformer sa stratégie en réalité, améliorer l’expérience et l’efficacité, et renforcer le fonctionnement quotidien de ses activités.\n\nLe cadre **RAADDDR** donne vie à ce travail. Il décrit les activités professionnelles essentielles à tout produit ou service numérique réussi : Research, Analyse, Architect, Design, Develop, Deliver et Run. Il ne s’agit pas de phases rigides dans un plan de projet, mais de rôles et de pratiques sur lesquels les équipes s’appuient en continu lorsqu’elles créent, améliorent et exploitent les services qui comptent pour leurs utilisateurs.\n\nAu fond, **RAADDDR** repose sur des équipes pluridisciplinaires qui partent des besoins des utilisateurs, conçoivent à partir des données, utilisent des modes de travail agiles et itératifs et exploitent des services fiables dans la durée. Il reconnaît que l’excellence numérique dépend du respect et de l’investissement accordés à chaque profession, ainsi que de la possibilité donnée à chacune de pratiquer pleinement son métier. Ce cadre met en valeur l’ensemble de ces professions : il permet de parler avec assurance de ce que nous faisons, de pourquoi cela compte et de la manière dont cela crée de meilleurs résultats pour les personnes et les communautés que nous servons.",
     chooseActivity: "Choisissez une activité ci-dessous pour en savoir plus :",
+    metaEducationalUse: "référence",
+    metaLearningResourceType: "cadre",
+    metaTeaches: "compétences numériques",
     themeLabelDark: "Mode sombre",
     themeLabelLight: "Mode clair",
     langModalTitle: "Choisir la langue",
@@ -87,6 +90,9 @@ export const TRANSLATIONS = {
     description:
       "By **digital** we mean using modern technology, data and design to create and run products and services that work end-to-end for people - customers, service users, citizens, colleagues, suppliers, and partners. It is not just about websites or IT systems. It is about how an organisation delivers its purpose: turning strategy into reality, improving experience and efficiency, and strengthening the day-to-day operation of the business.\n\nThe **RAADDDR** framework brings this work to life. It describes the core professional activities behind any successful digital product or service: Research, Analyse, Architect, Design, Develop, Deliver, and Run. These are not rigid phases in a project plan. They are roles and practices that teams draw on continuously as they create, improve and operate the services that matter to their users.\n\nAt its heart, **RAADDDR** is about multidisciplinary teams that start with user needs, design with data, use agile and iterative ways of working, and operate reliable services over time. It recognises that excellent digital outcomes depend on each profession being respected, invested in and given the space to practise its craft. This framework is a showcase for that profession: a way to talk confidently about what we do, why it matters, and how it delivers better outcomes for the people and communities we serve.",
     chooseActivity: "Choose an activity below to learn more:",
+    metaEducationalUse: "reference",
+    metaLearningResourceType: "framework",
+    metaTeaches: "digital skills",
     themeLabelDark: "Dark Mode",
     themeLabelLight: "Light Mode",
     langModalTitle: "Select Language",

@@ -26,8 +26,8 @@ const BASE_URL = "https://raadddr.digital";
 const LICENSE = "https://creativecommons.org/public-domain/cc0/";
 const USAGEINFO =
   "Public Domain (CC0). Attribution to https://raadddr.digital appreciated but not required.";
-const DATEPUBLISHED = "2025-12-10";
-const CURRENTDATEONLYSTR = new Date().toISOString().split("T")[0];
+const DATEPUBLISHED = "2025-12-10T00:00:00Z";
+const CURRENTDATEONLYSTR = new Date().toISOString();
 const CODEREPO = "https://github.com/OllieJC/raadddr.digital";
 const AUTHOR = "OllieJC <https://olliejc.uk>";
 
@@ -118,33 +118,19 @@ const generateLLMsText = () => {
 const buildJSONLD = (lang, data) => {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": ["DefinedTermSet", "WebPage", "SoftwareSourceCode"],
+    "@type": ["DefinedTermSet", "Article", "LearningResource"],
     "@id": "https://raadddr.digital/",
-    name: getText(data, "title"),
+    name: "RAADDDR",
+    image: `https://raadddr.digital/assets/logo.svg`,
+    headline: getText(data, "title"),
     description: getText(data, "description"),
     inLanguage: lang,
     url: `https://raadddr.digital/#${lang}`,
 
-    /*
-    // TODO: make it conditional if the keys
-    // exist in the data for the specific language
-    about: [
-      { "@type": "Thing", name: "Digital profession" },
-      { "@type": "Thing", name: "Public sector digital delivery" },
-    ],
-    keywords: [
-      "digital profession",
-      "information technology",
-      "agile",
-      "service delivery",
-      "iterative",
-    ],
-    audience: {
-      "@type": "Audience",
-      audienceType: "Digital professionals",
-    },
-    educationalUse: "Reference",
-    learningResourceType: "Framework",*/
+    educationalUse: getText(data, "metaEducationalUse"),
+    learningResourceType: getText(data, "metaLearningResourceType"),
+    teaches: getText(data, "metaTeaches"),
+    accessMode: "textual",
 
     license: LICENSE,
     usageInfo: USAGEINFO,
@@ -155,12 +141,18 @@ const buildJSONLD = (lang, data) => {
       "@id": "https://olliejc.uk",
       name: "OllieJC",
       url: "https://olliejc.uk",
+      sameAs: [
+        "https://github.com/OllieJC",
+        "https://www.linkedin.com/in/olliejc/",
+        "https://bsky.app/profile/olliejc.uk",
+        "https://dev.to/olliejc",
+      ],
     },
-    codeRepository: CODEREPO,
+    sameAs: CODEREPO,
     hasDefinedTerm: [],
     about: {
       "@type": "Thing",
-      name: "Framework",
+      name: getText(data, "metaLearningResourceType"),
     },
   };
 
