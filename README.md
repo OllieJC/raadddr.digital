@@ -74,6 +74,9 @@ The build produces:
 
 - `dist/raadddr.<lang>.md`
 - `dist/raadddr.<lang>.jsonld`
+- `dist/index.html` with inlined, minified CSS/JS for performance
+- `dist/llms.txt` for model ingestion
+- `sitemap.xml`, `_headers`, and `robots.txt` copied from the root
 
 ## Contributing
 
