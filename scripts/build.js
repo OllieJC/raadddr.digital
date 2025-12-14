@@ -1,4 +1,4 @@
-import { TRANSLATIONS } from "../assets/translations.js";
+import { TRANSLATIONS } from "../translations.js";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -291,12 +291,39 @@ const buildIndex = async () => {
       metaItems.push(
         `<script type="application/ld+json">${jsonLDContent}</script>`
       );
+      metaItems.push(
+        `<link rel="alternate" hreflang="${lang}" href="https://raadddr.digital/">`
+      );
     }
   });
 
   indexContent = indexContent.replace(
     "<!-- METATAGS -->",
     metaItems.join("\n")
+  );
+
+  const mainCSS = await fs.readFile(
+    path.join(assetsSrcDir, "main.css"),
+    "utf8"
+  );
+  const minifiedCSS = cssoMinify(mainCSS).css;
+  indexContent = indexContent.replace(
+    "<!-- MAIN CSS -->",
+    `<style>${minifiedCSS}</style>`
+  );
+
+  const translationsStr = `const TRANSLATIONS = ${JSON.stringify(
+    TRANSLATIONS
+  )};`;
+
+  const mainJs = await fs.readFile(path.join(assetsSrcDir, "main.js"), "utf8");
+  const minifiedJs = uglifyMinify(mainJs, {
+    compress: true,
+    mangle: true,
+  }).code;
+  indexContent = indexContent.replace(
+    "<!-- MAIN JS -->",
+    `<script type="module">${translationsStr}${minifiedJs}</script>`
   );
 
   const indexFile = path.join(distDir, "index.html");
@@ -318,37 +345,11 @@ async function copyRecursive(src, dest) {
   } else {
     const ext = path.extname(src).toLowerCase();
     if (ext === ".css") {
-      await minifyCss(src, dest);
       return;
     }
     if (ext === ".js") {
-      await minifyJs(src, dest);
       return;
     }
-    await fs.copyFile(src, dest);
-  }
-}
-
-async function minifyCss(src, dest) {
-  try {
-    const css = await fs.readFile(src, "utf8");
-    const minified = cssoMinify(css).css;
-    await fs.writeFile(dest, minified, "utf8");
-  } catch (err) {
-    console.warn(`CSS minify failed for ${src}, copying instead.`, err);
-    await fs.copyFile(src, dest);
-  }
-}
-
-async function minifyJs(src, dest) {
-  try {
-    const js = await fs.readFile(src, "utf8");
-    const result = uglifyMinify(js, { compress: true, mangle: true });
-    if (result.error) throw result.error;
-    const code = result.code || js;
-    await fs.writeFile(dest, code, "utf8");
-  } catch (err) {
-    console.warn(`JS minify failed for ${src}, copying instead.`, err);
     await fs.copyFile(src, dest);
   }
 }
@@ -356,6 +357,28 @@ async function minifyJs(src, dest) {
 async function copyAssets() {
   await fs.mkdir(assetsDistDir, { recursive: true });
   await copyRecursive(assetsSrcDir, assetsDistDir);
+}
+
+async function buildSitemap() {
+  const lines = [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
+    "  <url>",
+    `    <loc>${BASE_URL}/</loc>`,
+    `    <lastmod>${CURRENTDATEONLYSTR}</lastmod>`,
+  ];
+
+  Object.keys(TRANSLATIONS).forEach((lang) => {
+    const href = lang === "en-gb" ? `${BASE_URL}/` : `${BASE_URL}/#${lang}`;
+    lines.push(
+      `    <xhtml:link rel="alternate" hreflang="${lang}" href="${href}" />`
+    );
+  });
+
+  lines.push("  </url>", "</urlset>");
+
+  const sitemapPath = path.join(distDir, "sitemap.xml");
+  await fs.writeFile(sitemapPath, lines.join("\n"), "utf8");
 }
 
 async function main() {
@@ -380,9 +403,17 @@ async function main() {
 
   await buildIndex();
   await copyAssets();
-  await copyRecursive(path.join(root, "_headers"), path.join(distDir, "_headers"));
+  await copyRecursive(
+    path.join(root, "_headers"),
+    path.join(distDir, "_headers")
+  );
+  await copyRecursive(
+    path.join(root, "robots.txt"),
+    path.join(distDir, "robots.txt")
+  );
   const llmsText = generateLLMsText();
   await fs.writeFile(path.join(distDir, "llms.txt"), llmsText, "utf8");
+  await buildSitemap();
 }
 
 main()

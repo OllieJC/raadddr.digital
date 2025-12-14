@@ -12,10 +12,12 @@
     <link rel="canonical" href="https://raadddr.digital/">
     <meta name="keywords"
           content="RAADDDR, digital, technology, framework, activities, products, services, digital profession, information technology, agile, service delivery, iterative">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!--link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </noscript -->
     <link rel="icon"
           type="image/png"
           href="assets/favicon-96x96.png"
@@ -32,57 +34,9 @@
           href="llms.txt"
           title="LLM context summary">
     <!-- METATAGS -->
-    <link rel="stylesheet" href="assets/main.css">
+    <!-- MAIN CSS -->
   </head>
   <body>
-    <!-- DETAIL Modal -->
-    <div id="detailModal" class="modal-overlay">
-      <div class="modal-content"
-           role="dialog"
-           aria-modal="true"
-           aria-labelledby="mTitle"
-           aria-describedby="mDesc">
-        <button class="modal-close"
-                type="button"
-                id="closeDetailModal"
-                aria-label="Close details"
-                tabindex="-1">
-          <svg class="icon-lg" viewBox="0 0 24 24">
-            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-          </svg>
-        </button>
-        <div class="modal-header">
-          <span class="modal-big-letter" id="mLetter"></span>
-          <span class="modal-title" id="mTitle"></span>
-        </div>
-        <!-- Roles Container -->
-        <div class="modal-roles" id="mRoles"></div>
-        <p class="modal-desc" id="mDesc"></p>
-      </div>
-    </div>
-    <!-- LANGUAGE Modal -->
-    <div id="langModal" class="modal-overlay">
-      <div class="modal-content"
-           role="dialog"
-           aria-modal="true"
-           aria-labelledby="langModalTitle"
-           aria-describedby="langModalDesc">
-        <button class="modal-close"
-                type="button"
-                tabindex="-1"
-                id="closeLangModal"
-                aria-label="Close language selection">
-          <svg class="icon-lg" viewBox="0 0 24 24">
-            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-          </svg>
-        </button>
-        <h2 id="langModalTitle" data-i18n="langModalTitle">Select Language</h2>
-        <p id="langModalDesc" data-i18n="langModalDesc">Choose your preferred interface language.</p>
-        <div class="lang-list" id="langList">
-          <!-- Populated by JS -->
-        </div>
-      </div>
-    </div>
     <div class="wrapper">
       <!-- Controls: Language & Theme -->
       <header class="controls" aria-label="Site settings">
@@ -122,79 +76,107 @@
             <p class="choose-activity" tabindex="0" data-i18n="chooseActivity"></p>
           </section>
           <div class="acronym-grid">
-            <section id="research" aria-labelledby="researchButton">
-              <button id="researchButton" class="grid-item" role="heading" aria-level="2">
+            <section id="research" aria-labelledby="researchHeading">
+              <button id="researchButton" class="grid-item">
                 <span class="letter" data-i18n="researchLetter"></span>
                 <span class="em" data-i18n="researchPrefix"></span>
                 <span data-i18n="researchLabel"></span>
               </button>
               <div class="visually-hidden">
+                <h2 id="researchHeading">
+                  <span class="em" data-i18n="researchPrefix"></span>
+                  <span data-i18n="researchLabel"></span>
+                </h2>
                 <div class="role-container" id="researchRoles"></div>
                 <p data-i18n="researchDesc"></p>
               </div>
             </section>
-            <section id="analyse" aria-labelledby="analyseButton">
-              <button id="analyseButton" class="grid-item" role="heading" aria-level="2">
+            <section id="analyse" aria-labelledby="analyseHeading">
+              <button id="analyseButton" class="grid-item">
                 <span class="letter" data-i18n="analyseLetter"></span>
                 <span class="em" data-i18n="analysePrefix"></span>
                 <span data-i18n="analyseLabel"></span>
               </button>
               <div class="visually-hidden">
+                <h2 id="analyseHeading">
+                  <span class="em" data-i18n="analysePrefix"></span>
+                  <span data-i18n="analyseLabel"></span>
+                </h2>
                 <div class="role-container" id="analyseRoles"></div>
                 <p data-i18n="analyseDesc"></p>
               </div>
             </section>
-            <section id="architect" aria-labelledby="architectButton">
-              <button id="architectButton" class="grid-item" role="heading" aria-level="2">
+            <section id="architect" aria-labelledby="architectHeading">
+              <button id="architectButton" class="grid-item">
                 <span class="letter" data-i18n="architectLetter"></span>
                 <span class="em" data-i18n="architectPrefix"></span>
                 <span data-i18n="architectLabel"></span>
               </button>
               <div class="visually-hidden">
+                <h2 id="architectHeading">
+                  <span class="em" data-i18n="architectPrefix"></span>
+                  <span data-i18n="architectLabel"></span>
+                </h2>
                 <div class="role-container" id="architectRoles"></div>
                 <p data-i18n="architectDesc"></p>
               </div>
             </section>
-            <section id="design" aria-labelledby="designButton">
-              <button id="designButton" class="grid-item" role="heading" aria-level="2">
+            <section id="design" aria-labelledby="designHeading">
+              <button id="designButton" class="grid-item">
                 <span class="letter" data-i18n="designLetter"></span>
                 <span class="em" data-i18n="designPrefix"></span>
                 <span data-i18n="designLabel"></span>
               </button>
               <div class="visually-hidden">
+                <h2 id="designHeading">
+                  <span class="em" data-i18n="designPrefix"></span>
+                  <span data-i18n="designLabel"></span>
+                </h2>
                 <div class="role-container" id="designRoles"></div>
                 <p data-i18n="designDesc"></p>
               </div>
             </section>
-            <section id="develop" aria-labelledby="developButton">
-              <button id="developButton" class="grid-item" role="heading" aria-level="2">
+            <section id="develop" aria-labelledby="developHeading">
+              <button id="developButton" class="grid-item">
                 <span class="letter" data-i18n="developLetter"></span>
                 <span class="em" data-i18n="developPrefix"></span>
                 <span data-i18n="developLabel"></span>
               </button>
               <div class="visually-hidden">
+                <h2 id="developHeading">
+                  <span class="em" data-i18n="developPrefix"></span>
+                  <span data-i18n="developLabel"></span>
+                </h2>
                 <div class="role-container" id="developRoles"></div>
                 <p data-i18n="developDesc"></p>
               </div>
             </section>
-            <section id="deliver" aria-labelledby="deliverButton">
-              <button id="deliverButton" class="grid-item" role="heading" aria-level="2">
+            <section id="deliver" aria-labelledby="deliverHeading">
+              <button id="deliverButton" class="grid-item">
                 <span class="letter" data-i18n="deliverLetter"></span>
                 <span class="em" data-i18n="deliverPrefix"></span>
                 <span data-i18n="deliverLabel"></span>
               </button>
               <div class="visually-hidden">
+                <h2 id="deliverHeading">
+                  <span class="em" data-i18n="deliverPrefix"></span>
+                  <span data-i18n="deliverLabel"></span>
+                </h2>
                 <div class="role-container" id="deliverRoles"></div>
                 <p data-i18n="deliverDesc"></p>
               </div>
             </section>
-            <section id="run" aria-labelledby="runButton">
-              <button id="runButton" class="grid-item" role="heading" aria-level="2">
+            <section id="run" aria-labelledby="runHeading">
+              <button id="runButton" class="grid-item">
                 <span class="letter" data-i18n="runLetter"></span>
                 <span class="em" data-i18n="runPrefix"></span>
                 <span data-i18n="runLabel"></span>
               </button>
               <div class="visually-hidden" id="run-modal">
+                <h2 id="runHeading">
+                  <span class="em" data-i18n="runPrefix"></span>
+                  <span data-i18n="runLabel"></span>
+                </h2>
                 <div class="role-container" id="runRoles"></div>
                 <p data-i18n="runDesc"></p>
               </div>
@@ -217,6 +199,57 @@
            rel="noopener noreferrer">The Unlicense</a>
       </footer>
     </div>
-    <script type="module" src="assets/main.js"></script>
+    <!-- DETAIL Modal -->
+    <div id="detailModal" class="modal-overlay">
+      <div class="modal-content"
+           role="dialog"
+           aria-modal="true"
+           aria-labelledby="mTitle"
+           aria-describedby="mDesc"
+           aria-label="Activity details">
+        <button class="modal-close"
+                type="button"
+                id="closeDetailModal"
+                aria-label="Close details"
+                tabindex="-1">
+          <svg class="icon-lg" viewBox="0 0 24 24">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+          </svg>
+        </button>
+        <div class="modal-header">
+          <span class="modal-big-letter" id="mLetter"></span>
+          <span class="modal-title" id="mTitle"></span>
+        </div>
+        <!-- Roles Container -->
+        <div class="modal-roles" id="mRoles"></div>
+        <p class="modal-desc" id="mDesc"></p>
+      </div>
+    </div>
+    <!-- LANGUAGE Modal -->
+    <div id="langModal" class="modal-overlay">
+      <div class="modal-content"
+           role="dialog"
+           aria-modal="true"
+           aria-labelledby="langModalTitle"
+           aria-describedby="langModalDesc"
+           aria-label="Language selection">
+        <button class="modal-close"
+                type="button"
+                tabindex="-1"
+                id="closeLangModal"
+                aria-label="Close language selection">
+          <svg class="icon-lg" viewBox="0 0 24 24">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+          </svg>
+        </button>
+        <h2 id="langModalTitle" data-i18n="langModalTitle">Select Language</h2>
+        <p id="langModalDesc" data-i18n="langModalDesc">Choose your preferred interface language.</p>
+        <div class="lang-list" id="langList">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+    <!-- TRANSLATIONS JS -->
+    <!-- MAIN JS -->
   </body>
 </html>

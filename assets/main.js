@@ -1,5 +1,3 @@
-import { TRANSLATIONS } from "./translations.js";
-
 // --- Configuration & Data ---
 const LANGUAGES = [
   { code: "en-gb", name: "English (UK)" },
