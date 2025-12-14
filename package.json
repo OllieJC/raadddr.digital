@@ -25,7 +25,7 @@
   "homepage": "https://github.com/OllieJC/raadddr.digital#readme",
   "devDependencies": {
     "chokidar-cli": "^3.0.0",
-    "concurrently": "^8.0.0",
+    "concurrently": "^9.2.1",
     "csso": "^5.0.5",
     "http-server": "^14.1.1",
     "uglify-js": "^3.19.3"
