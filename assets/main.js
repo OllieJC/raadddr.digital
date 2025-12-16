@@ -86,8 +86,11 @@ function getHtmlValue(value) {
   if (value !== undefined && value !== null) {
     if (typeof value === "string") {
       return value
-        .replaceAll(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-        .replaceAll("\n", "<br>");
+        .replaceAll(/\*\*(.*?)\*\*/g, `<strong>$1</strong>`)
+        .replaceAll(/#### (.*?)\n/g, `<h4>$1</h4>\n`)
+        .replaceAll(/### (.*?)\n/g, `<h3>$1</h3>\n`)
+        .replaceAll(/## (.*?)\n/g, `<h2>$1</h2>\n`)
+        .replaceAll(/\n/g, "<br>\n");
     }
     return value;
   }

@@ -213,15 +213,18 @@ const buildIndex = async () => {
 
   let desc = defaultTranslations.description;
   desc = desc
-    .replace(/\*\*(.*?)\*\*/g, `<strong>$1</strong>`)
-    .replace(/\n/g, "<br>\n");
-  indexContent = indexContent.replace(
-    /data-i18n="description"></,
+    .replaceAll(/\*\*(.*?)\*\*/g, `<strong>$1</strong>`)
+    .replaceAll(/#### (.*?)\n/g, `<h4>$1</h4>\n`)
+    .replaceAll(/### (.*?)\n/g, `<h3>$1</h3>\n`)
+    .replaceAll(/## (.*?)\n/g, `<h2>$1</h2>\n`)
+    .replaceAll(/\n/g, "<br>\n");
+  indexContent = indexContent.replaceAll(
+    /data-i18n="description"></g,
     `data-i18n="description">${desc}<`
   );
 
-  indexContent = indexContent.replace(
-    /data-i18n="chooseActivity"></,
+  indexContent = indexContent.replaceAll(
+    /data-i18n="chooseActivity"></g,
     `data-i18n="chooseActivity">${defaultTranslations.chooseActivity}<`
   );
 
@@ -234,23 +237,23 @@ const buildIndex = async () => {
 
     const prefixStr = prefix ? `${prefix} ` : "";
 
-    indexContent = indexContent.replace(
-      new RegExp(`data-i18n="${key}Letter"><`),
+    indexContent = indexContent.replaceAll(
+      new RegExp(`data-i18n="${key}Letter"><`, "g"),
       `data-i18n="${key}Letter">${letter}<`
     );
 
-    indexContent = indexContent.replace(
-      new RegExp(`data-i18n="${key}Prefix"><`),
+    indexContent = indexContent.replaceAll(
+      new RegExp(`data-i18n="${key}Prefix"><`, "g"),
       `data-i18n="${key}Prefix">${prefixStr}<`
     );
 
-    indexContent = indexContent.replace(
-      new RegExp(`data-i18n="${key}Label"><`),
+    indexContent = indexContent.replaceAll(
+      new RegExp(`data-i18n="${key}Label"><`, "g"),
       `data-i18n="${key}Label">${label}<`
     );
 
-    indexContent = indexContent.replace(
-      new RegExp(`data-i18n="${key}Desc"><`),
+    indexContent = indexContent.replaceAll(
+      new RegExp(`data-i18n="${key}Desc"><`, "g"),
       `data-i18n="${key}Desc">${descVal}<`
     );
 
@@ -258,8 +261,8 @@ const buildIndex = async () => {
       .map((role) => `<span class="role-pill">${role}</span>`)
       .join("");
 
-    indexContent = indexContent.replace(
-      new RegExp(`id="${key}Roles"><\\/div>`),
+    indexContent = indexContent.replaceAll(
+      new RegExp(`id="${key}Roles"><\\/div>`, "g"),
       `id="${key}Roles">${rolesHtml}</div>`
     );
   });
