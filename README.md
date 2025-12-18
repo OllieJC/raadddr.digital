@@ -3,7 +3,8 @@
 [![Site](https://img.shields.io/badge/site-raadddr.digital-067a96)](https://raadddr.digital/)
 [![Issues](https://img.shields.io/github/issues/OllieJC/raadddr.digital)](https://github.com/OllieJC/raadddr.digital/issues)
 [![PRs](https://img.shields.io/badge/PRs-welcome-brightgreen)](https://github.com/OllieJC/raadddr.digital/pulls)
-[![License](https://img.shields.io/badge/license-CC0%2FUnlicense-555)](#licence)
+[![License](https://img.shields.io/badge/license-CC0%2FUnlicense-161)](#licence)
+[![Ko-fi](https://img.shields.io/badge/ko--fi-tip-ff5f5f?logo=ko-fi&logoColor=white)](https://ko-fi.com/olliejc)
 
 Source code for the public RAADDDR framework site - a deliberately simple, static microsite that explains the RAADDDR model and makes it easy to consume, translate, and reuse.
 
